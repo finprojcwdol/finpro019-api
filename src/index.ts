@@ -23,7 +23,7 @@ app.use(express.json());
 
 // ✅ Healthcheck endpoint
 app.get('/api', (_req: Request, res: Response) => {
-  res.status(200).json({ message: 'Welcome to My API!' });
+  res.status(200).json({ message: 'Welcome to My API...!' });
 });
 
 // 🛣️ API routes

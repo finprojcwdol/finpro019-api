@@ -6,7 +6,7 @@ import PropertyController from "../controllers/property.controller";
 // import UserProfileController from "../controllers/user-profile";
 
 const getProfileLimiter = rateLimit({
-  windowMs: 5 * 60 * 1000, // 5 menit
+  windowMs: 5 * 60 * 1000, // 5 menit...
   max: Number(process.env.PROFILE_REQUEST_LIMITER) || 10,
   message: "Too many requests. Please try again later.",
 });
