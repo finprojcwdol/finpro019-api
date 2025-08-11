@@ -1,9 +1,8 @@
 import { Router } from "express";
 import rateLimit from "express-rate-limit";
-import UserProfileController from "../controllers/user-profile.controller";
 import { authenticateToken } from "../middlewares/auth";
 import PropertyController from "../controllers/property.controller";
-// import UserProfileController from "../controllers/user-profile";
+import UserProfileController from "../controllers/user-profile.controller";
 
 const getProfileLimiter = rateLimit({
   windowMs: 5 * 60 * 1000, // 5 menit...
@@ -14,10 +13,12 @@ const getProfileLimiter = rateLimit({
 export default class PropertyRouter {
   private router: Router;
   private PropertyController: PropertyController;
+  private userProfileController: UserProfileController;
 
   constructor() {
     this.router = Router();
     this.PropertyController = new PropertyController();
+    this.userProfileController = new UserProfileController();
     this.initializeRoutes();
   }
 
@@ -25,6 +26,8 @@ export default class PropertyRouter {
     this.router.post("/details", authenticateToken, this.PropertyController.getDetails);
     this.router.post("/detail-update", authenticateToken, this.PropertyController.updateDetails);
     this.router.get("/categories", authenticateToken, this.PropertyController.getCategories);
+    this.router.post("/getusr", authenticateToken, this.userProfileController.getProfile);
+
   }
 
   public getRouter(): Router {
