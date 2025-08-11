@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
+const auth_1 = require("../middlewares/auth");
 const user_profile_controller_1 = __importDefault(require("../controllers/user-profile.controller"));
 const property_controller_1 = __importDefault(require("../controllers/property.controller"));
 const getProfileLimiter = (0, express_rate_limit_1.default)({
@@ -20,7 +21,8 @@ class UserProfileRouter {
         this.initializeRoutes();
     }
     initializeRoutes() {
-        // this.router.post("/get", authenticateToken, this.PropertyController.getDetails);
+        // this.router.post("/get1", authenticateToken, this.PropertyController.getDetails);
+        this.router.post("/get1", auth_1.authenticateToken, this.userProfileController.getProfile);
         // this.router.post("/get", authenticateToken, this.userProfileController.getProfile);
         this.router.patch("/update", this.userProfileController.updateProfile);
         this.router.patch("/update-password", this.userProfileController.updatePassword);
