@@ -69,16 +69,26 @@ model PropertyCategory {
 }
 
 model Property {
-  id          String   @id @default(uuid())
-  name        String
-  description String
-  location    String
-  long        String
-  lot         String
-  picture     String?
-  categoryId  String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id            String  @id @default(uuid())
+  name          String
+  description   String?
+  location      String?
+  long          String?
+  lot           String?
+  picture       String?
+  categoryId    String
+  country       String?
+  phone_country String?
+  phone_number  String?
+
+  pic_first_name   String?
+  pic_last_name    String?
+  pic_email        String?
+  pic_position     String?
+  pic_country_code String?
+  pic_phone_number String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
 
   tenantId Int
   tenant   User             @relation("UserProperties", fields: [tenantId], references: [id])

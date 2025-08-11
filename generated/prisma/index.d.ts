@@ -5708,6 +5708,15 @@ export namespace Prisma {
     lot: string | null
     picture: string | null
     categoryId: string | null
+    country: string | null
+    phone_country: string | null
+    phone_number: string | null
+    pic_first_name: string | null
+    pic_last_name: string | null
+    pic_email: string | null
+    pic_position: string | null
+    pic_country_code: string | null
+    pic_phone_number: string | null
     createdAt: Date | null
     updatedAt: Date | null
     tenantId: number | null
@@ -5722,6 +5731,15 @@ export namespace Prisma {
     lot: string | null
     picture: string | null
     categoryId: string | null
+    country: string | null
+    phone_country: string | null
+    phone_number: string | null
+    pic_first_name: string | null
+    pic_last_name: string | null
+    pic_email: string | null
+    pic_position: string | null
+    pic_country_code: string | null
+    pic_phone_number: string | null
     createdAt: Date | null
     updatedAt: Date | null
     tenantId: number | null
@@ -5736,6 +5754,15 @@ export namespace Prisma {
     lot: number
     picture: number
     categoryId: number
+    country: number
+    phone_country: number
+    phone_number: number
+    pic_first_name: number
+    pic_last_name: number
+    pic_email: number
+    pic_position: number
+    pic_country_code: number
+    pic_phone_number: number
     createdAt: number
     updatedAt: number
     tenantId: number
@@ -5760,6 +5787,15 @@ export namespace Prisma {
     lot?: true
     picture?: true
     categoryId?: true
+    country?: true
+    phone_country?: true
+    phone_number?: true
+    pic_first_name?: true
+    pic_last_name?: true
+    pic_email?: true
+    pic_position?: true
+    pic_country_code?: true
+    pic_phone_number?: true
     createdAt?: true
     updatedAt?: true
     tenantId?: true
@@ -5774,6 +5810,15 @@ export namespace Prisma {
     lot?: true
     picture?: true
     categoryId?: true
+    country?: true
+    phone_country?: true
+    phone_number?: true
+    pic_first_name?: true
+    pic_last_name?: true
+    pic_email?: true
+    pic_position?: true
+    pic_country_code?: true
+    pic_phone_number?: true
     createdAt?: true
     updatedAt?: true
     tenantId?: true
@@ -5788,6 +5833,15 @@ export namespace Prisma {
     lot?: true
     picture?: true
     categoryId?: true
+    country?: true
+    phone_country?: true
+    phone_number?: true
+    pic_first_name?: true
+    pic_last_name?: true
+    pic_email?: true
+    pic_position?: true
+    pic_country_code?: true
+    pic_phone_number?: true
     createdAt?: true
     updatedAt?: true
     tenantId?: true
@@ -5883,12 +5937,21 @@ export namespace Prisma {
   export type PropertyGroupByOutputType = {
     id: string
     name: string
-    description: string
-    location: string
-    long: string
-    lot: string
+    description: string | null
+    location: string | null
+    long: string | null
+    lot: string | null
     picture: string | null
     categoryId: string
+    country: string | null
+    phone_country: string | null
+    phone_number: string | null
+    pic_first_name: string | null
+    pic_last_name: string | null
+    pic_email: string | null
+    pic_position: string | null
+    pic_country_code: string | null
+    pic_phone_number: string | null
     createdAt: Date
     updatedAt: Date
     tenantId: number
@@ -5922,6 +5985,15 @@ export namespace Prisma {
     lot?: boolean
     picture?: boolean
     categoryId?: boolean
+    country?: boolean
+    phone_country?: boolean
+    phone_number?: boolean
+    pic_first_name?: boolean
+    pic_last_name?: boolean
+    pic_email?: boolean
+    pic_position?: boolean
+    pic_country_code?: boolean
+    pic_phone_number?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     tenantId?: boolean
@@ -5942,6 +6014,15 @@ export namespace Prisma {
     lot?: boolean
     picture?: boolean
     categoryId?: boolean
+    country?: boolean
+    phone_country?: boolean
+    phone_number?: boolean
+    pic_first_name?: boolean
+    pic_last_name?: boolean
+    pic_email?: boolean
+    pic_position?: boolean
+    pic_country_code?: boolean
+    pic_phone_number?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     tenantId?: boolean
@@ -5958,6 +6039,15 @@ export namespace Prisma {
     lot?: boolean
     picture?: boolean
     categoryId?: boolean
+    country?: boolean
+    phone_country?: boolean
+    phone_number?: boolean
+    pic_first_name?: boolean
+    pic_last_name?: boolean
+    pic_email?: boolean
+    pic_position?: boolean
+    pic_country_code?: boolean
+    pic_phone_number?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     tenantId?: boolean
@@ -5974,12 +6064,21 @@ export namespace Prisma {
     lot?: boolean
     picture?: boolean
     categoryId?: boolean
+    country?: boolean
+    phone_country?: boolean
+    phone_number?: boolean
+    pic_first_name?: boolean
+    pic_last_name?: boolean
+    pic_email?: boolean
+    pic_position?: boolean
+    pic_country_code?: boolean
+    pic_phone_number?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     tenantId?: boolean
   }
 
-  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "location" | "long" | "lot" | "picture" | "categoryId" | "createdAt" | "updatedAt" | "tenantId", ExtArgs["result"]["property"]>
+  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "location" | "long" | "lot" | "picture" | "categoryId" | "country" | "phone_country" | "phone_number" | "pic_first_name" | "pic_last_name" | "pic_email" | "pic_position" | "pic_country_code" | "pic_phone_number" | "createdAt" | "updatedAt" | "tenantId", ExtArgs["result"]["property"]>
   export type PropertyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tenant?: boolean | UserDefaultArgs<ExtArgs>
     category?: boolean | PropertyCategoryDefaultArgs<ExtArgs>
@@ -6009,12 +6108,21 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
-      description: string
-      location: string
-      long: string
-      lot: string
+      description: string | null
+      location: string | null
+      long: string | null
+      lot: string | null
       picture: string | null
       categoryId: string
+      country: string | null
+      phone_country: string | null
+      phone_number: string | null
+      pic_first_name: string | null
+      pic_last_name: string | null
+      pic_email: string | null
+      pic_position: string | null
+      pic_country_code: string | null
+      pic_phone_number: string | null
       createdAt: Date
       updatedAt: Date
       tenantId: number
@@ -6454,6 +6562,15 @@ export namespace Prisma {
     readonly lot: FieldRef<"Property", 'String'>
     readonly picture: FieldRef<"Property", 'String'>
     readonly categoryId: FieldRef<"Property", 'String'>
+    readonly country: FieldRef<"Property", 'String'>
+    readonly phone_country: FieldRef<"Property", 'String'>
+    readonly phone_number: FieldRef<"Property", 'String'>
+    readonly pic_first_name: FieldRef<"Property", 'String'>
+    readonly pic_last_name: FieldRef<"Property", 'String'>
+    readonly pic_email: FieldRef<"Property", 'String'>
+    readonly pic_position: FieldRef<"Property", 'String'>
+    readonly pic_country_code: FieldRef<"Property", 'String'>
+    readonly pic_phone_number: FieldRef<"Property", 'String'>
     readonly createdAt: FieldRef<"Property", 'DateTime'>
     readonly updatedAt: FieldRef<"Property", 'DateTime'>
     readonly tenantId: FieldRef<"Property", 'Int'>
@@ -15913,6 +16030,15 @@ export namespace Prisma {
     lot: 'lot',
     picture: 'picture',
     categoryId: 'categoryId',
+    country: 'country',
+    phone_country: 'phone_country',
+    phone_number: 'phone_number',
+    pic_first_name: 'pic_first_name',
+    pic_last_name: 'pic_last_name',
+    pic_email: 'pic_email',
+    pic_position: 'pic_position',
+    pic_country_code: 'pic_country_code',
+    pic_phone_number: 'pic_phone_number',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     tenantId: 'tenantId'
@@ -16416,12 +16542,21 @@ export namespace Prisma {
     NOT?: PropertyWhereInput | PropertyWhereInput[]
     id?: StringFilter<"Property"> | string
     name?: StringFilter<"Property"> | string
-    description?: StringFilter<"Property"> | string
-    location?: StringFilter<"Property"> | string
-    long?: StringFilter<"Property"> | string
-    lot?: StringFilter<"Property"> | string
+    description?: StringNullableFilter<"Property"> | string | null
+    location?: StringNullableFilter<"Property"> | string | null
+    long?: StringNullableFilter<"Property"> | string | null
+    lot?: StringNullableFilter<"Property"> | string | null
     picture?: StringNullableFilter<"Property"> | string | null
     categoryId?: StringFilter<"Property"> | string
+    country?: StringNullableFilter<"Property"> | string | null
+    phone_country?: StringNullableFilter<"Property"> | string | null
+    phone_number?: StringNullableFilter<"Property"> | string | null
+    pic_first_name?: StringNullableFilter<"Property"> | string | null
+    pic_last_name?: StringNullableFilter<"Property"> | string | null
+    pic_email?: StringNullableFilter<"Property"> | string | null
+    pic_position?: StringNullableFilter<"Property"> | string | null
+    pic_country_code?: StringNullableFilter<"Property"> | string | null
+    pic_phone_number?: StringNullableFilter<"Property"> | string | null
     createdAt?: DateTimeFilter<"Property"> | Date | string
     updatedAt?: DateTimeFilter<"Property"> | Date | string
     tenantId?: IntFilter<"Property"> | number
@@ -16435,12 +16570,21 @@ export namespace Prisma {
   export type PropertyOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    description?: SortOrder
-    location?: SortOrder
-    long?: SortOrder
-    lot?: SortOrder
+    description?: SortOrderInput | SortOrder
+    location?: SortOrderInput | SortOrder
+    long?: SortOrderInput | SortOrder
+    lot?: SortOrderInput | SortOrder
     picture?: SortOrderInput | SortOrder
     categoryId?: SortOrder
+    country?: SortOrderInput | SortOrder
+    phone_country?: SortOrderInput | SortOrder
+    phone_number?: SortOrderInput | SortOrder
+    pic_first_name?: SortOrderInput | SortOrder
+    pic_last_name?: SortOrderInput | SortOrder
+    pic_email?: SortOrderInput | SortOrder
+    pic_position?: SortOrderInput | SortOrder
+    pic_country_code?: SortOrderInput | SortOrder
+    pic_phone_number?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     tenantId?: SortOrder
@@ -16457,12 +16601,21 @@ export namespace Prisma {
     OR?: PropertyWhereInput[]
     NOT?: PropertyWhereInput | PropertyWhereInput[]
     name?: StringFilter<"Property"> | string
-    description?: StringFilter<"Property"> | string
-    location?: StringFilter<"Property"> | string
-    long?: StringFilter<"Property"> | string
-    lot?: StringFilter<"Property"> | string
+    description?: StringNullableFilter<"Property"> | string | null
+    location?: StringNullableFilter<"Property"> | string | null
+    long?: StringNullableFilter<"Property"> | string | null
+    lot?: StringNullableFilter<"Property"> | string | null
     picture?: StringNullableFilter<"Property"> | string | null
     categoryId?: StringFilter<"Property"> | string
+    country?: StringNullableFilter<"Property"> | string | null
+    phone_country?: StringNullableFilter<"Property"> | string | null
+    phone_number?: StringNullableFilter<"Property"> | string | null
+    pic_first_name?: StringNullableFilter<"Property"> | string | null
+    pic_last_name?: StringNullableFilter<"Property"> | string | null
+    pic_email?: StringNullableFilter<"Property"> | string | null
+    pic_position?: StringNullableFilter<"Property"> | string | null
+    pic_country_code?: StringNullableFilter<"Property"> | string | null
+    pic_phone_number?: StringNullableFilter<"Property"> | string | null
     createdAt?: DateTimeFilter<"Property"> | Date | string
     updatedAt?: DateTimeFilter<"Property"> | Date | string
     tenantId?: IntFilter<"Property"> | number
@@ -16476,12 +16629,21 @@ export namespace Prisma {
   export type PropertyOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    description?: SortOrder
-    location?: SortOrder
-    long?: SortOrder
-    lot?: SortOrder
+    description?: SortOrderInput | SortOrder
+    location?: SortOrderInput | SortOrder
+    long?: SortOrderInput | SortOrder
+    lot?: SortOrderInput | SortOrder
     picture?: SortOrderInput | SortOrder
     categoryId?: SortOrder
+    country?: SortOrderInput | SortOrder
+    phone_country?: SortOrderInput | SortOrder
+    phone_number?: SortOrderInput | SortOrder
+    pic_first_name?: SortOrderInput | SortOrder
+    pic_last_name?: SortOrderInput | SortOrder
+    pic_email?: SortOrderInput | SortOrder
+    pic_position?: SortOrderInput | SortOrder
+    pic_country_code?: SortOrderInput | SortOrder
+    pic_phone_number?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     tenantId?: SortOrder
@@ -16498,12 +16660,21 @@ export namespace Prisma {
     NOT?: PropertyScalarWhereWithAggregatesInput | PropertyScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Property"> | string
     name?: StringWithAggregatesFilter<"Property"> | string
-    description?: StringWithAggregatesFilter<"Property"> | string
-    location?: StringWithAggregatesFilter<"Property"> | string
-    long?: StringWithAggregatesFilter<"Property"> | string
-    lot?: StringWithAggregatesFilter<"Property"> | string
+    description?: StringNullableWithAggregatesFilter<"Property"> | string | null
+    location?: StringNullableWithAggregatesFilter<"Property"> | string | null
+    long?: StringNullableWithAggregatesFilter<"Property"> | string | null
+    lot?: StringNullableWithAggregatesFilter<"Property"> | string | null
     picture?: StringNullableWithAggregatesFilter<"Property"> | string | null
     categoryId?: StringWithAggregatesFilter<"Property"> | string
+    country?: StringNullableWithAggregatesFilter<"Property"> | string | null
+    phone_country?: StringNullableWithAggregatesFilter<"Property"> | string | null
+    phone_number?: StringNullableWithAggregatesFilter<"Property"> | string | null
+    pic_first_name?: StringNullableWithAggregatesFilter<"Property"> | string | null
+    pic_last_name?: StringNullableWithAggregatesFilter<"Property"> | string | null
+    pic_email?: StringNullableWithAggregatesFilter<"Property"> | string | null
+    pic_position?: StringNullableWithAggregatesFilter<"Property"> | string | null
+    pic_country_code?: StringNullableWithAggregatesFilter<"Property"> | string | null
+    pic_phone_number?: StringNullableWithAggregatesFilter<"Property"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Property"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Property"> | Date | string
     tenantId?: IntWithAggregatesFilter<"Property"> | number
@@ -17270,11 +17441,20 @@ export namespace Prisma {
   export type PropertyCreateInput = {
     id?: string
     name: string
-    description: string
-    location: string
-    long: string
-    lot: string
+    description?: string | null
+    location?: string | null
+    long?: string | null
+    lot?: string | null
     picture?: string | null
+    country?: string | null
+    phone_country?: string | null
+    phone_number?: string | null
+    pic_first_name?: string | null
+    pic_last_name?: string | null
+    pic_email?: string | null
+    pic_position?: string | null
+    pic_country_code?: string | null
+    pic_phone_number?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     tenant: UserCreateNestedOneWithoutPropertiesInput
@@ -17287,12 +17467,21 @@ export namespace Prisma {
   export type PropertyUncheckedCreateInput = {
     id?: string
     name: string
-    description: string
-    location: string
-    long: string
-    lot: string
+    description?: string | null
+    location?: string | null
+    long?: string | null
+    lot?: string | null
     picture?: string | null
     categoryId: string
+    country?: string | null
+    phone_country?: string | null
+    phone_number?: string | null
+    pic_first_name?: string | null
+    pic_last_name?: string | null
+    pic_email?: string | null
+    pic_position?: string | null
+    pic_country_code?: string | null
+    pic_phone_number?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     tenantId: number
@@ -17304,11 +17493,20 @@ export namespace Prisma {
   export type PropertyUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    long?: StringFieldUpdateOperationsInput | string
-    lot?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    long?: NullableStringFieldUpdateOperationsInput | string | null
+    lot?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_email?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_position?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_country_code?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenant?: UserUpdateOneRequiredWithoutPropertiesNestedInput
@@ -17321,12 +17519,21 @@ export namespace Prisma {
   export type PropertyUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    long?: StringFieldUpdateOperationsInput | string
-    lot?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    long?: NullableStringFieldUpdateOperationsInput | string | null
+    lot?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_email?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_position?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_country_code?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenantId?: IntFieldUpdateOperationsInput | number
@@ -17338,12 +17545,21 @@ export namespace Prisma {
   export type PropertyCreateManyInput = {
     id?: string
     name: string
-    description: string
-    location: string
-    long: string
-    lot: string
+    description?: string | null
+    location?: string | null
+    long?: string | null
+    lot?: string | null
     picture?: string | null
     categoryId: string
+    country?: string | null
+    phone_country?: string | null
+    phone_number?: string | null
+    pic_first_name?: string | null
+    pic_last_name?: string | null
+    pic_email?: string | null
+    pic_position?: string | null
+    pic_country_code?: string | null
+    pic_phone_number?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     tenantId: number
@@ -17352,11 +17568,20 @@ export namespace Prisma {
   export type PropertyUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    long?: StringFieldUpdateOperationsInput | string
-    lot?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    long?: NullableStringFieldUpdateOperationsInput | string | null
+    lot?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_email?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_position?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_country_code?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -17364,12 +17589,21 @@ export namespace Prisma {
   export type PropertyUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    long?: StringFieldUpdateOperationsInput | string
-    lot?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    long?: NullableStringFieldUpdateOperationsInput | string | null
+    lot?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_email?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_position?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_country_code?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenantId?: IntFieldUpdateOperationsInput | number
@@ -18280,6 +18514,15 @@ export namespace Prisma {
     lot?: SortOrder
     picture?: SortOrder
     categoryId?: SortOrder
+    country?: SortOrder
+    phone_country?: SortOrder
+    phone_number?: SortOrder
+    pic_first_name?: SortOrder
+    pic_last_name?: SortOrder
+    pic_email?: SortOrder
+    pic_position?: SortOrder
+    pic_country_code?: SortOrder
+    pic_phone_number?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     tenantId?: SortOrder
@@ -18298,6 +18541,15 @@ export namespace Prisma {
     lot?: SortOrder
     picture?: SortOrder
     categoryId?: SortOrder
+    country?: SortOrder
+    phone_country?: SortOrder
+    phone_number?: SortOrder
+    pic_first_name?: SortOrder
+    pic_last_name?: SortOrder
+    pic_email?: SortOrder
+    pic_position?: SortOrder
+    pic_country_code?: SortOrder
+    pic_phone_number?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     tenantId?: SortOrder
@@ -18312,6 +18564,15 @@ export namespace Prisma {
     lot?: SortOrder
     picture?: SortOrder
     categoryId?: SortOrder
+    country?: SortOrder
+    phone_country?: SortOrder
+    phone_number?: SortOrder
+    pic_first_name?: SortOrder
+    pic_last_name?: SortOrder
+    pic_email?: SortOrder
+    pic_position?: SortOrder
+    pic_country_code?: SortOrder
+    pic_phone_number?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     tenantId?: SortOrder
@@ -19899,11 +20160,20 @@ export namespace Prisma {
   export type PropertyCreateWithoutTenantInput = {
     id?: string
     name: string
-    description: string
-    location: string
-    long: string
-    lot: string
+    description?: string | null
+    location?: string | null
+    long?: string | null
+    lot?: string | null
     picture?: string | null
+    country?: string | null
+    phone_country?: string | null
+    phone_number?: string | null
+    pic_first_name?: string | null
+    pic_last_name?: string | null
+    pic_email?: string | null
+    pic_position?: string | null
+    pic_country_code?: string | null
+    pic_phone_number?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     category: PropertyCategoryCreateNestedOneWithoutPropertiesInput
@@ -19915,12 +20185,21 @@ export namespace Prisma {
   export type PropertyUncheckedCreateWithoutTenantInput = {
     id?: string
     name: string
-    description: string
-    location: string
-    long: string
-    lot: string
+    description?: string | null
+    location?: string | null
+    long?: string | null
+    lot?: string | null
     picture?: string | null
     categoryId: string
+    country?: string | null
+    phone_country?: string | null
+    phone_number?: string | null
+    pic_first_name?: string | null
+    pic_last_name?: string | null
+    pic_email?: string | null
+    pic_position?: string | null
+    pic_country_code?: string | null
+    pic_phone_number?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     rooms?: RoomUncheckedCreateNestedManyWithoutPropertyInput
@@ -20072,12 +20351,21 @@ export namespace Prisma {
     NOT?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
     id?: StringFilter<"Property"> | string
     name?: StringFilter<"Property"> | string
-    description?: StringFilter<"Property"> | string
-    location?: StringFilter<"Property"> | string
-    long?: StringFilter<"Property"> | string
-    lot?: StringFilter<"Property"> | string
+    description?: StringNullableFilter<"Property"> | string | null
+    location?: StringNullableFilter<"Property"> | string | null
+    long?: StringNullableFilter<"Property"> | string | null
+    lot?: StringNullableFilter<"Property"> | string | null
     picture?: StringNullableFilter<"Property"> | string | null
     categoryId?: StringFilter<"Property"> | string
+    country?: StringNullableFilter<"Property"> | string | null
+    phone_country?: StringNullableFilter<"Property"> | string | null
+    phone_number?: StringNullableFilter<"Property"> | string | null
+    pic_first_name?: StringNullableFilter<"Property"> | string | null
+    pic_last_name?: StringNullableFilter<"Property"> | string | null
+    pic_email?: StringNullableFilter<"Property"> | string | null
+    pic_position?: StringNullableFilter<"Property"> | string | null
+    pic_country_code?: StringNullableFilter<"Property"> | string | null
+    pic_phone_number?: StringNullableFilter<"Property"> | string | null
     createdAt?: DateTimeFilter<"Property"> | Date | string
     updatedAt?: DateTimeFilter<"Property"> | Date | string
     tenantId?: IntFilter<"Property"> | number
@@ -20220,11 +20508,20 @@ export namespace Prisma {
   export type PropertyCreateWithoutCategoryInput = {
     id?: string
     name: string
-    description: string
-    location: string
-    long: string
-    lot: string
+    description?: string | null
+    location?: string | null
+    long?: string | null
+    lot?: string | null
     picture?: string | null
+    country?: string | null
+    phone_country?: string | null
+    phone_number?: string | null
+    pic_first_name?: string | null
+    pic_last_name?: string | null
+    pic_email?: string | null
+    pic_position?: string | null
+    pic_country_code?: string | null
+    pic_phone_number?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     tenant: UserCreateNestedOneWithoutPropertiesInput
@@ -20236,11 +20533,20 @@ export namespace Prisma {
   export type PropertyUncheckedCreateWithoutCategoryInput = {
     id?: string
     name: string
-    description: string
-    location: string
-    long: string
-    lot: string
+    description?: string | null
+    location?: string | null
+    long?: string | null
+    lot?: string | null
     picture?: string | null
+    country?: string | null
+    phone_country?: string | null
+    phone_number?: string | null
+    pic_first_name?: string | null
+    pic_last_name?: string | null
+    pic_email?: string | null
+    pic_position?: string | null
+    pic_country_code?: string | null
+    pic_phone_number?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     tenantId: number
@@ -20585,11 +20891,20 @@ export namespace Prisma {
   export type PropertyCreateWithoutRoomsInput = {
     id?: string
     name: string
-    description: string
-    location: string
-    long: string
-    lot: string
+    description?: string | null
+    location?: string | null
+    long?: string | null
+    lot?: string | null
     picture?: string | null
+    country?: string | null
+    phone_country?: string | null
+    phone_number?: string | null
+    pic_first_name?: string | null
+    pic_last_name?: string | null
+    pic_email?: string | null
+    pic_position?: string | null
+    pic_country_code?: string | null
+    pic_phone_number?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     tenant: UserCreateNestedOneWithoutPropertiesInput
@@ -20601,12 +20916,21 @@ export namespace Prisma {
   export type PropertyUncheckedCreateWithoutRoomsInput = {
     id?: string
     name: string
-    description: string
-    location: string
-    long: string
-    lot: string
+    description?: string | null
+    location?: string | null
+    long?: string | null
+    lot?: string | null
     picture?: string | null
     categoryId: string
+    country?: string | null
+    phone_country?: string | null
+    phone_number?: string | null
+    pic_first_name?: string | null
+    pic_last_name?: string | null
+    pic_email?: string | null
+    pic_position?: string | null
+    pic_country_code?: string | null
+    pic_phone_number?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     tenantId: number
@@ -20701,11 +21025,20 @@ export namespace Prisma {
   export type PropertyUpdateWithoutRoomsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    long?: StringFieldUpdateOperationsInput | string
-    lot?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    long?: NullableStringFieldUpdateOperationsInput | string | null
+    lot?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_email?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_position?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_country_code?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenant?: UserUpdateOneRequiredWithoutPropertiesNestedInput
@@ -20717,12 +21050,21 @@ export namespace Prisma {
   export type PropertyUncheckedUpdateWithoutRoomsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    long?: StringFieldUpdateOperationsInput | string
-    lot?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    long?: NullableStringFieldUpdateOperationsInput | string | null
+    lot?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_email?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_position?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_country_code?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenantId?: IntFieldUpdateOperationsInput | number
@@ -20990,11 +21332,20 @@ export namespace Prisma {
   export type PropertyCreateWithoutOrdersInput = {
     id?: string
     name: string
-    description: string
-    location: string
-    long: string
-    lot: string
+    description?: string | null
+    location?: string | null
+    long?: string | null
+    lot?: string | null
     picture?: string | null
+    country?: string | null
+    phone_country?: string | null
+    phone_number?: string | null
+    pic_first_name?: string | null
+    pic_last_name?: string | null
+    pic_email?: string | null
+    pic_position?: string | null
+    pic_country_code?: string | null
+    pic_phone_number?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     tenant: UserCreateNestedOneWithoutPropertiesInput
@@ -21006,12 +21357,21 @@ export namespace Prisma {
   export type PropertyUncheckedCreateWithoutOrdersInput = {
     id?: string
     name: string
-    description: string
-    location: string
-    long: string
-    lot: string
+    description?: string | null
+    location?: string | null
+    long?: string | null
+    lot?: string | null
     picture?: string | null
     categoryId: string
+    country?: string | null
+    phone_country?: string | null
+    phone_number?: string | null
+    pic_first_name?: string | null
+    pic_last_name?: string | null
+    pic_email?: string | null
+    pic_position?: string | null
+    pic_country_code?: string | null
+    pic_phone_number?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     tenantId: number
@@ -21116,11 +21476,20 @@ export namespace Prisma {
   export type PropertyUpdateWithoutOrdersInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    long?: StringFieldUpdateOperationsInput | string
-    lot?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    long?: NullableStringFieldUpdateOperationsInput | string | null
+    lot?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_email?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_position?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_country_code?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenant?: UserUpdateOneRequiredWithoutPropertiesNestedInput
@@ -21132,12 +21501,21 @@ export namespace Prisma {
   export type PropertyUncheckedUpdateWithoutOrdersInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    long?: StringFieldUpdateOperationsInput | string
-    lot?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    long?: NullableStringFieldUpdateOperationsInput | string | null
+    lot?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_email?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_position?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_country_code?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenantId?: IntFieldUpdateOperationsInput | number
@@ -21346,11 +21724,20 @@ export namespace Prisma {
   export type PropertyCreateWithoutReviewsInput = {
     id?: string
     name: string
-    description: string
-    location: string
-    long: string
-    lot: string
+    description?: string | null
+    location?: string | null
+    long?: string | null
+    lot?: string | null
     picture?: string | null
+    country?: string | null
+    phone_country?: string | null
+    phone_number?: string | null
+    pic_first_name?: string | null
+    pic_last_name?: string | null
+    pic_email?: string | null
+    pic_position?: string | null
+    pic_country_code?: string | null
+    pic_phone_number?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     tenant: UserCreateNestedOneWithoutPropertiesInput
@@ -21362,12 +21749,21 @@ export namespace Prisma {
   export type PropertyUncheckedCreateWithoutReviewsInput = {
     id?: string
     name: string
-    description: string
-    location: string
-    long: string
-    lot: string
+    description?: string | null
+    location?: string | null
+    long?: string | null
+    lot?: string | null
     picture?: string | null
     categoryId: string
+    country?: string | null
+    phone_country?: string | null
+    phone_number?: string | null
+    pic_first_name?: string | null
+    pic_last_name?: string | null
+    pic_email?: string | null
+    pic_position?: string | null
+    pic_country_code?: string | null
+    pic_phone_number?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     tenantId: number
@@ -21467,11 +21863,20 @@ export namespace Prisma {
   export type PropertyUpdateWithoutReviewsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    long?: StringFieldUpdateOperationsInput | string
-    lot?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    long?: NullableStringFieldUpdateOperationsInput | string | null
+    lot?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_email?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_position?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_country_code?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenant?: UserUpdateOneRequiredWithoutPropertiesNestedInput
@@ -21483,12 +21888,21 @@ export namespace Prisma {
   export type PropertyUncheckedUpdateWithoutReviewsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    long?: StringFieldUpdateOperationsInput | string
-    lot?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    long?: NullableStringFieldUpdateOperationsInput | string | null
+    lot?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_email?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_position?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_country_code?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenantId?: IntFieldUpdateOperationsInput | number
@@ -21702,12 +22116,21 @@ export namespace Prisma {
   export type PropertyCreateManyTenantInput = {
     id?: string
     name: string
-    description: string
-    location: string
-    long: string
-    lot: string
+    description?: string | null
+    location?: string | null
+    long?: string | null
+    lot?: string | null
     picture?: string | null
     categoryId: string
+    country?: string | null
+    phone_country?: string | null
+    phone_number?: string | null
+    pic_first_name?: string | null
+    pic_last_name?: string | null
+    pic_email?: string | null
+    pic_position?: string | null
+    pic_country_code?: string | null
+    pic_phone_number?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21804,11 +22227,20 @@ export namespace Prisma {
   export type PropertyUpdateWithoutTenantInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    long?: StringFieldUpdateOperationsInput | string
-    lot?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    long?: NullableStringFieldUpdateOperationsInput | string | null
+    lot?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_email?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_position?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_country_code?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: PropertyCategoryUpdateOneRequiredWithoutPropertiesNestedInput
@@ -21820,12 +22252,21 @@ export namespace Prisma {
   export type PropertyUncheckedUpdateWithoutTenantInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    long?: StringFieldUpdateOperationsInput | string
-    lot?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    long?: NullableStringFieldUpdateOperationsInput | string | null
+    lot?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_email?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_position?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_country_code?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     rooms?: RoomUncheckedUpdateManyWithoutPropertyNestedInput
@@ -21836,12 +22277,21 @@ export namespace Prisma {
   export type PropertyUncheckedUpdateManyWithoutTenantInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    long?: StringFieldUpdateOperationsInput | string
-    lot?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    long?: NullableStringFieldUpdateOperationsInput | string | null
+    lot?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_email?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_position?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_country_code?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -21873,11 +22323,20 @@ export namespace Prisma {
   export type PropertyCreateManyCategoryInput = {
     id?: string
     name: string
-    description: string
-    location: string
-    long: string
-    lot: string
+    description?: string | null
+    location?: string | null
+    long?: string | null
+    lot?: string | null
     picture?: string | null
+    country?: string | null
+    phone_country?: string | null
+    phone_number?: string | null
+    pic_first_name?: string | null
+    pic_last_name?: string | null
+    pic_email?: string | null
+    pic_position?: string | null
+    pic_country_code?: string | null
+    pic_phone_number?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     tenantId: number
@@ -21886,11 +22345,20 @@ export namespace Prisma {
   export type PropertyUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    long?: StringFieldUpdateOperationsInput | string
-    lot?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    long?: NullableStringFieldUpdateOperationsInput | string | null
+    lot?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_email?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_position?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_country_code?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenant?: UserUpdateOneRequiredWithoutPropertiesNestedInput
@@ -21902,11 +22370,20 @@ export namespace Prisma {
   export type PropertyUncheckedUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    long?: StringFieldUpdateOperationsInput | string
-    lot?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    long?: NullableStringFieldUpdateOperationsInput | string | null
+    lot?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_email?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_position?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_country_code?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenantId?: IntFieldUpdateOperationsInput | number
@@ -21918,11 +22395,20 @@ export namespace Prisma {
   export type PropertyUncheckedUpdateManyWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    long?: StringFieldUpdateOperationsInput | string
-    lot?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    long?: NullableStringFieldUpdateOperationsInput | string | null
+    lot?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_country?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_email?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_position?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_country_code?: NullableStringFieldUpdateOperationsInput | string | null
+    pic_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenantId?: IntFieldUpdateOperationsInput | number
