@@ -26,7 +26,8 @@ export default class UserProfileRouter {
     this.router.post("/get", authenticateToken, this.userProfileController.getProfile);
     this.router.patch("/update", this.userProfileController.updateProfile);
     this.router.patch("/update-password", this.userProfileController.updatePassword);
-    this.router.post("/propdetails", authenticateToken, this.PropertyController.getDetails);
+    // this.router.post("/propdetails", authenticateToken, this.PropertyController.getDetails);
+    this.router.post("/propdetails", authenticateToken, this.userProfileController.getProfile);
   }
 
   public getRouter(): Router {
