@@ -31,8 +31,8 @@ const authRouter = new AuthRouter();
 app.use('/api/auth', authRouter.getRouter());
 
 
-// const userProfileRouter = new UserProfileRouter();
-// app.use("/api/user-profile", userProfileRouter.getRouter()); 
+const userProfileRouter = new UserProfileRouter();
+app.use("/api/user-profile", userProfileRouter.getRouter()); 
 
 
 const propertyProfileRouter = new PropertyRouter();

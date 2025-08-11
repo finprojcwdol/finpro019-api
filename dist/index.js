@@ -9,6 +9,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const auth_router_1 = __importDefault(require("./routers/auth.router"));
 const test_route_1 = __importDefault(require("./routers/test.route"));
+const user_profile_router_1 = __importDefault(require("./routers/user-profile.router"));
 const property_router_1 = __importDefault(require("./routers/property.router"));
 const PORT = Number(process.env.PORT) || 8000;
 const app = (0, express_1.default)();
@@ -26,8 +27,8 @@ app.get('/api', (_req, res) => {
 // 🛣️ API routes
 const authRouter = new auth_router_1.default();
 app.use('/api/auth', authRouter.getRouter());
-// const userProfileRouter = new UserProfileRouter();
-// app.use("/api/user-profile", userProfileRouter.getRouter()); 
+const userProfileRouter = new user_profile_router_1.default();
+app.use("/api/user-profile", userProfileRouter.getRouter());
 const propertyProfileRouter = new property_router_1.default();
 app.use("/api/property", propertyProfileRouter.getRouter());
 app.use('/api', test_route_1.default);
