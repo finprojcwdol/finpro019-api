@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "A simple HTML/JS/CSS starter template",
   "main": "main.js",
-  "scripts": {
-    "build": "rimraf .vercel/cache dist && tsc && cp -r src/templates dist/",
+   "scripts": {
+    "build": "tsc && cp -r src/templates dist/",
     "start": "tsc && node ./dist/index.js",
     "dev": "ts-node-dev ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
