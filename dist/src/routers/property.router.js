@@ -7,9 +7,9 @@ const express_1 = require("express");
 const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
 const auth_1 = require("../middlewares/auth");
 const property_controller_1 = __importDefault(require("../controllers/property.controller"));
-// import UserProfileController from "../controllers/user-profile";
+const user_profile_controller_1 = __importDefault(require("../controllers/user-profile.controller"));
 const getProfileLimiter = (0, express_rate_limit_1.default)({
-    windowMs: 5 * 60 * 1000, // 5 menit
+    windowMs: 5 * 60 * 1000, // 5 menit...
     max: Number(process.env.PROFILE_REQUEST_LIMITER) || 10,
     message: "Too many requests. Please try again later.",
 });
@@ -17,12 +17,14 @@ class PropertyRouter {
     constructor() {
         this.router = (0, express_1.Router)();
         this.PropertyController = new property_controller_1.default();
+        this.userProfileController = new user_profile_controller_1.default();
         this.initializeRoutes();
     }
     initializeRoutes() {
         this.router.post("/details", auth_1.authenticateToken, this.PropertyController.getDetails);
         this.router.post("/detail-update", auth_1.authenticateToken, this.PropertyController.updateDetails);
         this.router.get("/categories", auth_1.authenticateToken, this.PropertyController.getCategories);
+        this.router.post("/getusr", auth_1.authenticateToken, this.userProfileController.getProfile);
     }
     getRouter() {
         return this.router;

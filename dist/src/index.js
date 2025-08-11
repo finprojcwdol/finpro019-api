@@ -22,7 +22,7 @@ app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 // ✅ Healthcheck endpoint
 app.get('/api', (_req, res) => {
-    res.status(200).json({ message: 'Welcome to My API!' });
+    res.status(200).json({ message: 'Welcome to My API...!' });
 });
 // 🛣️ API routes
 const authRouter = new auth_router_1.default();
