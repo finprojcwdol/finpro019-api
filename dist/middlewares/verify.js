@@ -26,7 +26,8 @@ const jsonwebtoken_1 = require("jsonwebtoken");
 //   });
 // };
 const verifyTokenVerification = (req, res, next) => {
-    const token = req.headers.authorization?.split(" ")[1];
+    var _a;
+    const token = (_a = req.headers.authorization) === null || _a === void 0 ? void 0 : _a.split(" ")[1];
     if (!token) {
         res.status(401).send({ message: "Unauthorize!" });
         return;

@@ -6,6 +6,7 @@ import cors from 'cors';
 import AuthRouter from './routers/auth.router';
 import testRouter from './routers/test.route';
 import UserProfileRouter from './routers/user-profile.router';
+import PropertyRouter from './routers/property.router';
 
 const PORT: number = Number(process.env.PORT) || 8000;
 const app: Application = express();
@@ -22,7 +23,7 @@ app.use(express.json());
 
 // ✅ Healthcheck endpoint
 app.get('/api', (_req: Request, res: Response) => {
-  res.status(200).json({ message: 'Welcome to My API!' });
+  res.status(200).json({ message: 'Welcome to My API...!' });
 });
 
 // 🛣️ API routes
@@ -32,6 +33,11 @@ app.use('/api/auth', authRouter.getRouter());
 
 const userProfileRouter = new UserProfileRouter();
 app.use("/api/user-profile", userProfileRouter.getRouter()); 
+
+
+const propertyProfileRouter = new PropertyRouter();
+app.use("/api/property", propertyProfileRouter.getRouter()); 
+
 
 app.use('/api', testRouter);
 

@@ -5,9 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
-const user_profile_controller_1 = __importDefault(require("../controllers/user-profile.controller"));
 const auth_1 = require("../middlewares/auth");
-// import UserProfileController from "../controllers/user-profile";
+const user_profile_controller_1 = __importDefault(require("../controllers/user-profile.controller"));
 const getProfileLimiter = (0, express_rate_limit_1.default)({
     windowMs: 5 * 60 * 1000, // 5 menit
     max: Number(process.env.PROFILE_REQUEST_LIMITER) || 10,

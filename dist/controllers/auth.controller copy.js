@@ -1,4 +1,15 @@
 "use strict";
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -82,10 +93,11 @@ class AuthController {
         }
     }
     async verify(req, res) {
+        var _a, _b;
         console.log("TOKEN VERIFICATION");
         try {
-            const { id } = res.locals?.user;
-            const token = res.locals?.token;
+            const { id } = (_a = res.locals) === null || _a === void 0 ? void 0 : _a.user;
+            const token = (_b = res.locals) === null || _b === void 0 ? void 0 : _b.token;
             const data = await prisma_1.default.email_verifications.findFirst({
                 where: { token, userId: id },
             });
@@ -142,12 +154,10 @@ class AuthController {
             }
             const payload = { id: user.id };
             const token = (0, jsonwebtoken_1.sign)(payload, process.env.SECRET_KEY, { expiresIn: "1h" });
-            const { password: _, ...userWithoutPassword } = user;
+            const { password: _ } = user, userWithoutPassword = __rest(user, ["password"]);
             res.status(200).send({
                 message: "Login OK",
-                user: {
-                    ...userWithoutPassword,
-                },
+                user: Object.assign({}, userWithoutPassword),
                 token
             });
         }
@@ -293,10 +303,11 @@ class AuthController {
         }
     }
     async verifyResetPassword(req, res) {
+        var _a, _b;
         console.log("TOKEN VERIFICATION");
         try {
-            const { id } = res.locals?.user;
-            const token = res.locals?.token;
+            const { id } = (_a = res.locals) === null || _a === void 0 ? void 0 : _a.user;
+            const token = (_b = res.locals) === null || _b === void 0 ? void 0 : _b.token;
             const data = await prisma_1.default.email_verifications.findFirst({
                 where: { token, userId: id },
             });

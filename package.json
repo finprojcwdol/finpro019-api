@@ -3,15 +3,21 @@
   "version": "1.0.0",
   "description": "A simple HTML/JS/CSS starter template",
   "main": "main.js",
-  "scripts": {
-    "build": "tsc && cp -r src/templates dist/",
-    "start": "tsc && node ./dist/index.js",
-    "dev": "ts-node-dev ./src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  
+"scripts": {
+  "build": "echo '--- MULAI BUILD ---' && tsc && cp -r src/templates dist/ && echo '--- CEK HASIL BUILD ---' && ls -R dist || echo 'Dist tidak ditemukan!'",
+  "start": "node ./dist/index.js",
+  "dev": "ts-node-dev ./src/index.ts",
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
+
+
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },  
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.19",

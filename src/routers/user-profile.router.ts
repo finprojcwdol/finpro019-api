@@ -1,8 +1,7 @@
 import { Router } from "express";
 import rateLimit from "express-rate-limit";
-import UserProfileController from "../controllers/user-profile.controller";
 import { authenticateToken } from "../middlewares/auth";
-// import UserProfileController from "../controllers/user-profile";
+import UserProfileController from "../controllers/user-profile.controller";
 
 const getProfileLimiter = rateLimit({
   windowMs: 5 * 60 * 1000, // 5 menit
@@ -24,7 +23,6 @@ export default class UserProfileRouter {
     this.router.post("/get", authenticateToken, this.userProfileController.getProfile);
     this.router.patch("/update", this.userProfileController.updateProfile);
     this.router.patch("/update-password", this.userProfileController.updatePassword);
-
   }
 
   public getRouter(): Router {

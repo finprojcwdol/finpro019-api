@@ -83,10 +83,11 @@ class AuthRegisterController {
         }
     }
     async verify(req, res) {
+        var _a, _b;
         console.log("TOKEN VERIFICATION");
         try {
-            const { id } = res.locals?.user;
-            const token = res.locals?.token;
+            const { id } = (_a = res.locals) === null || _a === void 0 ? void 0 : _a.user;
+            const token = (_b = res.locals) === null || _b === void 0 ? void 0 : _b.token;
             const data = await prisma_1.default.email_verifications.findFirst({
                 where: { token, userId: id },
             });
