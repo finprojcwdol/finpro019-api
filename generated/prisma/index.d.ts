@@ -4635,6 +4635,7 @@ export namespace Prisma {
   export type PropertyCategoryMinAggregateOutputType = {
     id: string | null
     name: string | null
+    description: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4642,6 +4643,7 @@ export namespace Prisma {
   export type PropertyCategoryMaxAggregateOutputType = {
     id: string | null
     name: string | null
+    description: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4649,6 +4651,7 @@ export namespace Prisma {
   export type PropertyCategoryCountAggregateOutputType = {
     id: number
     name: number
+    description: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -4658,6 +4661,7 @@ export namespace Prisma {
   export type PropertyCategoryMinAggregateInputType = {
     id?: true
     name?: true
+    description?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4665,6 +4669,7 @@ export namespace Prisma {
   export type PropertyCategoryMaxAggregateInputType = {
     id?: true
     name?: true
+    description?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4672,6 +4677,7 @@ export namespace Prisma {
   export type PropertyCategoryCountAggregateInputType = {
     id?: true
     name?: true
+    description?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -4752,6 +4758,7 @@ export namespace Prisma {
   export type PropertyCategoryGroupByOutputType = {
     id: string
     name: string
+    description: string | null
     createdAt: Date
     updatedAt: Date
     _count: PropertyCategoryCountAggregateOutputType | null
@@ -4776,6 +4783,7 @@ export namespace Prisma {
   export type PropertyCategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     properties?: boolean | PropertyCategory$propertiesArgs<ExtArgs>
@@ -4785,6 +4793,7 @@ export namespace Prisma {
   export type PropertyCategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["propertyCategory"]>
@@ -4792,6 +4801,7 @@ export namespace Prisma {
   export type PropertyCategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["propertyCategory"]>
@@ -4799,11 +4809,12 @@ export namespace Prisma {
   export type PropertyCategorySelectScalar = {
     id?: boolean
     name?: boolean
+    description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type PropertyCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["propertyCategory"]>
+  export type PropertyCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["propertyCategory"]>
   export type PropertyCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     properties?: boolean | PropertyCategory$propertiesArgs<ExtArgs>
     _count?: boolean | PropertyCategoryCountOutputTypeDefaultArgs<ExtArgs>
@@ -4819,6 +4830,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
+      description: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["propertyCategory"]>
@@ -5247,6 +5259,7 @@ export namespace Prisma {
   interface PropertyCategoryFieldRefs {
     readonly id: FieldRef<"PropertyCategory", 'String'>
     readonly name: FieldRef<"PropertyCategory", 'String'>
+    readonly description: FieldRef<"PropertyCategory", 'String'>
     readonly createdAt: FieldRef<"PropertyCategory", 'DateTime'>
     readonly updatedAt: FieldRef<"PropertyCategory", 'DateTime'>
   }
@@ -16014,6 +16027,7 @@ export namespace Prisma {
   export const PropertyCategoryScalarFieldEnum: {
     id: 'id',
     name: 'name',
+    description: 'description',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -16492,6 +16506,7 @@ export namespace Prisma {
     NOT?: PropertyCategoryWhereInput | PropertyCategoryWhereInput[]
     id?: StringFilter<"PropertyCategory"> | string
     name?: StringFilter<"PropertyCategory"> | string
+    description?: StringNullableFilter<"PropertyCategory"> | string | null
     createdAt?: DateTimeFilter<"PropertyCategory"> | Date | string
     updatedAt?: DateTimeFilter<"PropertyCategory"> | Date | string
     properties?: PropertyListRelationFilter
@@ -16500,6 +16515,7 @@ export namespace Prisma {
   export type PropertyCategoryOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     properties?: PropertyOrderByRelationAggregateInput
@@ -16511,6 +16527,7 @@ export namespace Prisma {
     OR?: PropertyCategoryWhereInput[]
     NOT?: PropertyCategoryWhereInput | PropertyCategoryWhereInput[]
     name?: StringFilter<"PropertyCategory"> | string
+    description?: StringNullableFilter<"PropertyCategory"> | string | null
     createdAt?: DateTimeFilter<"PropertyCategory"> | Date | string
     updatedAt?: DateTimeFilter<"PropertyCategory"> | Date | string
     properties?: PropertyListRelationFilter
@@ -16519,6 +16536,7 @@ export namespace Prisma {
   export type PropertyCategoryOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: PropertyCategoryCountOrderByAggregateInput
@@ -16532,6 +16550,7 @@ export namespace Prisma {
     NOT?: PropertyCategoryScalarWhereWithAggregatesInput | PropertyCategoryScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"PropertyCategory"> | string
     name?: StringWithAggregatesFilter<"PropertyCategory"> | string
+    description?: StringNullableWithAggregatesFilter<"PropertyCategory"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"PropertyCategory"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"PropertyCategory"> | Date | string
   }
@@ -17388,6 +17407,7 @@ export namespace Prisma {
   export type PropertyCategoryCreateInput = {
     id?: string
     name: string
+    description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     properties?: PropertyCreateNestedManyWithoutCategoryInput
@@ -17396,6 +17416,7 @@ export namespace Prisma {
   export type PropertyCategoryUncheckedCreateInput = {
     id?: string
     name: string
+    description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     properties?: PropertyUncheckedCreateNestedManyWithoutCategoryInput
@@ -17404,6 +17425,7 @@ export namespace Prisma {
   export type PropertyCategoryUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     properties?: PropertyUpdateManyWithoutCategoryNestedInput
@@ -17412,6 +17434,7 @@ export namespace Prisma {
   export type PropertyCategoryUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     properties?: PropertyUncheckedUpdateManyWithoutCategoryNestedInput
@@ -17420,6 +17443,7 @@ export namespace Prisma {
   export type PropertyCategoryCreateManyInput = {
     id?: string
     name: string
+    description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -17427,6 +17451,7 @@ export namespace Prisma {
   export type PropertyCategoryUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -17434,6 +17459,7 @@ export namespace Prisma {
   export type PropertyCategoryUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18472,6 +18498,7 @@ export namespace Prisma {
   export type PropertyCategoryCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -18479,6 +18506,7 @@ export namespace Prisma {
   export type PropertyCategoryMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -18486,6 +18514,7 @@ export namespace Prisma {
   export type PropertyCategoryMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -20634,6 +20663,7 @@ export namespace Prisma {
   export type PropertyCategoryCreateWithoutPropertiesInput = {
     id?: string
     name: string
+    description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -20641,6 +20671,7 @@ export namespace Prisma {
   export type PropertyCategoryUncheckedCreateWithoutPropertiesInput = {
     id?: string
     name: string
+    description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -20816,6 +20847,7 @@ export namespace Prisma {
   export type PropertyCategoryUpdateWithoutPropertiesInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -20823,6 +20855,7 @@ export namespace Prisma {
   export type PropertyCategoryUncheckedUpdateWithoutPropertiesInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

@@ -150,6 +150,7 @@ exports.Prisma.Email_verificationsScalarFieldEnum = {
 exports.Prisma.PropertyCategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  description: 'description',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

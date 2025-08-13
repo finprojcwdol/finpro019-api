@@ -1,3 +1,4 @@
+// import { PrismaClient, Role, Gender, AuthType, OrderStatus, RateType } from "@prisma/client";
 import { AuthType, Gender, OrderStatus, PrismaClient, RateType, Role } from '../generated/prisma';
 
 const prisma = new PrismaClient();
@@ -6,65 +7,13 @@ async function main() {
   console.log("🌱 Starting seed...");
 
   // 1️⃣ Property Categories
-  const propertyCategories = [
-    {
-      name: 'Hotel',
-      description:
-        'Accommodations for travelers often with restaurants, meeting rooms and other guest services',
-    },
-    {
-      name: 'Guesthouse',
-      description:
-        'Private home with separate living facilities for host and guest',
-    },
-    {
-      name: 'Bed and breakfast',
-      description:
-        'Private home offering overnight stays and breakfast',
-    },
-    {
-      name: 'Homestay',
-      description:
-        'Private home with shared living facilities for host and guest',
-    },
-    {
-      name: 'Hostel',
-      description:
-        'Budget accommodations with mostly dorm-style beds and social atmosphere',
-    },
-    {
-      name: 'Condo hotel',
-      description:
-        'Independent apartments with some hotel facilities like a front desk',
-    },
-    {
-      name: 'Capsule Hotel',
-      description:
-        'Extremely small units or capsules offering cheap and basic overnight accommodations',
-    },
-    {
-      name: 'Country House',
-      description:
-        'Private home in the countryside with simple accommodations',
-    },
-    // {
-    //   name: 'Farm stay',
-    //   description:
-    //     'Private farm with simple accommodations',
-    // },
-  ];
+  const categoryHotel = await prisma.propertyCategory.create({
+    data: { name: "Hotel" },
+  });
 
-  // Simpan semua kategori, ambil yang Hotel
-  const createdCategories = await Promise.all(
-    propertyCategories.map((cat) =>
-      prisma.propertyCategory.create({
-        data: cat,
-      })
-    )
-  );
-
-  const categoryHotel = createdCategories.find((cat) => cat.name === 'Hotel');
-  if (!categoryHotel) throw new Error("Category 'Hotel' not found in seeding!");
+  const categoryVilla = await prisma.propertyCategory.create({
+    data: { name: "Villa" },
+  });
 
   // 2️⃣ Users
   const tenant = await prisma.user.create({
