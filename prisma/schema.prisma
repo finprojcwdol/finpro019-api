@@ -106,6 +106,7 @@ model Room {
   description String
   price       Int
   propertyId  String
+  number_of_rooms Int
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -113,6 +114,7 @@ model Room {
   availabilities RoomAvailability[]
   peakRates    PeakRate[]
   orderItems   OrderItem[]
+  facilities      RoomFacilities[] @relation("RoomFacilitiesOnRooms")
 }
 
 model RoomAvailability {
@@ -124,6 +126,14 @@ model RoomAvailability {
   room      Room     @relation(fields: [roomId], references: [id])
   @@unique([roomId, date])
 }
+
+model RoomFacilities {
+  id   String @id @default(uuid())
+  name String
+
+  rooms Room[] @relation("RoomFacilitiesOnRooms")
+}
+
 
 model PeakRate {
   id        String   @id @default(uuid())

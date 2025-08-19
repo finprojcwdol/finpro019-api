@@ -24,6 +24,7 @@ class PropertyRouter {
         this.router.post("/details", auth_1.authenticateToken, this.PropertyController.getDetails);
         this.router.post("/detail-update", auth_1.authenticateToken, this.PropertyController.updateDetails);
         this.router.get("/categories", auth_1.authenticateToken, this.PropertyController.getCategories);
+        this.router.get("/room-facilities", auth_1.authenticateToken, this.PropertyController.getRoomFacilities);
         this.router.post("/getusr", auth_1.authenticateToken, this.userProfileController.getProfile);
     }
     getRouter() {

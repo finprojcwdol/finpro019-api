@@ -100,18 +100,20 @@ model Property {
 }
 
 model Room {
-  id          String   @id @default(uuid())
-  name        String
-  description String
-  price       Int
-  propertyId  String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id              String   @id @default(uuid())
+  name            String
+  description     String
+  price           Int
+  propertyId      String
+  number_of_rooms Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 
   property       Property           @relation(fields: [propertyId], references: [id])
   availabilities RoomAvailability[]
   peakRates      PeakRate[]
   orderItems     OrderItem[]
+  facilities     RoomFacilities[]   @relation("RoomFacilitiesOnRooms")
 }
 
 model RoomAvailability {
@@ -123,6 +125,13 @@ model RoomAvailability {
   room Room @relation(fields: [roomId], references: [id])
 
   @@unique([roomId, date])
+}
+
+model RoomFacilities {
+  id   String @id @default(uuid())
+  name String
+
+  rooms Room[] @relation("RoomFacilitiesOnRooms")
 }
 
 model PeakRate {

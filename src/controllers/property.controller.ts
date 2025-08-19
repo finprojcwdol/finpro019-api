@@ -86,6 +86,22 @@ export default class PropertyController {
     }
   }
 
+  async getRoomFacilities(req: Request, res: Response) {
+    try {
+      const RoomFacilities = await prisma.roomFacilities.findMany();
+
+      res.status(200).json({
+        message: "Success",
+        data: RoomFacilities,
+      });
+      return;
+    } catch (error: any) {
+      console.error("Error fetching room facilities:", error);
+      res.status(500).json({ message: "Internal server error" });
+      return;
+    }
+  }  
+
   // ✅ Fungsi untuk update atau buat properti berdasarkan email
   async updateDetails(req: Request, res: Response) {
     try {

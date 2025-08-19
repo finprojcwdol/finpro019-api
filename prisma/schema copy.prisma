@@ -1,0 +1,209 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        Int     @id @default(autoincrement())
+  username  String  
+  email     String  @unique
+  password  String
+  avatar    String?
+  birthdate DateTime? 
+  mobile_number  String?
+  residence  String?
+  gender    Gender?
+  auth_type AuthType?
+  user_code Int @default(0)
+  role             Role
+  orders           Order[]
+  reviews          Review[]  
+  UserVerifications email_verifications[] @relation("UserVerifications")
+  properties       Property[]     @relation("UserProperties") // relasi balik untuk tenant
+  salesReports     SalesReport[]  @relation("UserSalesReports")
+  isVerified Boolean @default(false)
+  isAvailable Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model email_verifications{
+  id Int @id @default(autoincrement())
+  
+  userId Int
+  user   User @relation("UserVerifications", fields: [userId], references: [id])
+
+  token String
+  createdAt DateTime @default(now())
+  expiredAt DateTime 
+}
+
+
+enum Role {
+  USER
+  TENANT
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+enum AuthType {
+  CREDENTIAL
+  GOOGLE
+}
+
+model PropertyCategory {
+  id        String     @id @default(uuid())
+  name      String
+  description String?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  properties Property[]
+}
+
+model Property {
+  id          String     @id @default(uuid())
+  name        String
+  description String?
+  location    String?
+  long        String?
+  lot         String?
+  picture     String?
+  categoryId  String
+  country     String?
+  phone_country       String?
+  phone_number String?
+
+  pic_first_name String?
+  pic_last_name String?
+  pic_email   String?
+  pic_position String?
+  pic_country_code String?
+  pic_phone_number String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  tenantId Int
+  tenant   User @relation("UserProperties", fields: [tenantId], references: [id])
+  category    PropertyCategory @relation(fields: [categoryId], references: [id])
+  rooms       Room[]
+  orders      Order[]
+  reviews     Review[]
+}
+
+model Room {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  price       Int
+  propertyId  String
+  number_of_rooms Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  property    Property @relation(fields: [propertyId], references: [id])
+  availabilities RoomAvailability[]
+  peakRates    PeakRate[]
+  orderItems   OrderItem[]
+}
+
+model RoomAvailability {
+  id        String   @id @default(uuid())
+  roomId    String
+  date      DateTime
+  isAvailable Boolean @default(true)
+
+  room      Room     @relation(fields: [roomId], references: [id])
+  @@unique([roomId, date])
+}
+
+model PeakRate {
+  id        String   @id @default(uuid())
+  roomId    String
+  date      DateTime
+  type      RateType
+  price     Int      // percentage or nominal depending on type
+
+  room      Room     @relation(fields: [roomId], references: [id])
+  @@unique([roomId, date])
+}
+
+enum RateType {
+  PERCENTAGE
+  NOMINAL
+}
+
+model Order {
+  id           String     @id @default(uuid())
+  propertyId   String
+  status       OrderStatus
+  startDate    DateTime
+  endDate      DateTime
+  totalAmount  Int
+  paymentProof String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  userId   Int
+  user     User @relation(fields: [userId], references: [id])
+  property     Property   @relation(fields: [propertyId], references: [id])
+  items        OrderItem[]
+}
+
+model OrderItem {
+  id        String   @id @default(uuid())
+  orderId   String
+  roomId    String
+  price     Int
+
+  order     Order    @relation(fields: [orderId], references: [id])
+  room      Room     @relation(fields: [roomId], references: [id])
+}
+
+enum OrderStatus {
+  PENDING
+  WAITING_PAYMENT
+  CONFIRMED
+  CANCELLED
+}
+
+model Review {
+  id         String   @id @default(uuid())
+  propertyId String
+  comment    String
+  createdAt  DateTime @default(now())
+
+  userId   Int
+  user     User @relation(fields: [userId], references: [id])
+  property   Property @relation(fields: [propertyId], references: [id])
+  reply      ReviewReply?
+}
+
+model ReviewReply {
+  id        String  @id @default(uuid())
+  reviewId  String  @unique
+  comment   String
+  createdAt DateTime @default(now())
+
+  review    Review  @relation(fields: [reviewId], references: [id])
+}
+
+model SalesReport {
+  id              String     @id @default(uuid())
+  tenantId        Int
+  tenant          User @relation("UserSalesReports", fields: [tenantId], references: [id])
+
+  totalIncome     Float
+  fromDate        DateTime
+  toDate          DateTime
+  createdAt       DateTime   @default(now())
+}

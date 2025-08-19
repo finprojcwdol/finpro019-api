@@ -26,6 +26,7 @@ export default class PropertyRouter {
     this.router.post("/details", authenticateToken, this.PropertyController.getDetails);
     this.router.post("/detail-update", authenticateToken, this.PropertyController.updateDetails);
     this.router.get("/categories", authenticateToken, this.PropertyController.getCategories);
+    this.router.get("/room-facilities", authenticateToken, this.PropertyController.getRoomFacilities);
     this.router.post("/getusr", authenticateToken, this.userProfileController.getProfile);
 
   }

@@ -44,6 +44,11 @@ export type Room = $Result.DefaultSelection<Prisma.$RoomPayload>
  */
 export type RoomAvailability = $Result.DefaultSelection<Prisma.$RoomAvailabilityPayload>
 /**
+ * Model RoomFacilities
+ * 
+ */
+export type RoomFacilities = $Result.DefaultSelection<Prisma.$RoomFacilitiesPayload>
+/**
  * Model PeakRate
  * 
  */
@@ -325,6 +330,16 @@ export class PrismaClient<
     * ```
     */
   get roomAvailability(): Prisma.RoomAvailabilityDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.roomFacilities`: Exposes CRUD operations for the **RoomFacilities** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RoomFacilities
+    * const roomFacilities = await prisma.roomFacilities.findMany()
+    * ```
+    */
+  get roomFacilities(): Prisma.RoomFacilitiesDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.peakRate`: Exposes CRUD operations for the **PeakRate** model.
@@ -831,6 +846,7 @@ export namespace Prisma {
     Property: 'Property',
     Room: 'Room',
     RoomAvailability: 'RoomAvailability',
+    RoomFacilities: 'RoomFacilities',
     PeakRate: 'PeakRate',
     Order: 'Order',
     OrderItem: 'OrderItem',
@@ -855,7 +871,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "email_verifications" | "propertyCategory" | "property" | "room" | "roomAvailability" | "peakRate" | "order" | "orderItem" | "review" | "reviewReply" | "salesReport"
+      modelProps: "user" | "email_verifications" | "propertyCategory" | "property" | "room" | "roomAvailability" | "roomFacilities" | "peakRate" | "order" | "orderItem" | "review" | "reviewReply" | "salesReport"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1300,6 +1316,80 @@ export namespace Prisma {
           count: {
             args: Prisma.RoomAvailabilityCountArgs<ExtArgs>
             result: $Utils.Optional<RoomAvailabilityCountAggregateOutputType> | number
+          }
+        }
+      }
+      RoomFacilities: {
+        payload: Prisma.$RoomFacilitiesPayload<ExtArgs>
+        fields: Prisma.RoomFacilitiesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RoomFacilitiesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoomFacilitiesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RoomFacilitiesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoomFacilitiesPayload>
+          }
+          findFirst: {
+            args: Prisma.RoomFacilitiesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoomFacilitiesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RoomFacilitiesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoomFacilitiesPayload>
+          }
+          findMany: {
+            args: Prisma.RoomFacilitiesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoomFacilitiesPayload>[]
+          }
+          create: {
+            args: Prisma.RoomFacilitiesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoomFacilitiesPayload>
+          }
+          createMany: {
+            args: Prisma.RoomFacilitiesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.RoomFacilitiesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoomFacilitiesPayload>[]
+          }
+          delete: {
+            args: Prisma.RoomFacilitiesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoomFacilitiesPayload>
+          }
+          update: {
+            args: Prisma.RoomFacilitiesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoomFacilitiesPayload>
+          }
+          deleteMany: {
+            args: Prisma.RoomFacilitiesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RoomFacilitiesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.RoomFacilitiesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoomFacilitiesPayload>[]
+          }
+          upsert: {
+            args: Prisma.RoomFacilitiesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoomFacilitiesPayload>
+          }
+          aggregate: {
+            args: Prisma.RoomFacilitiesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRoomFacilities>
+          }
+          groupBy: {
+            args: Prisma.RoomFacilitiesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RoomFacilitiesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RoomFacilitiesCountArgs<ExtArgs>
+            result: $Utils.Optional<RoomFacilitiesCountAggregateOutputType> | number
           }
         }
       }
@@ -1837,6 +1927,7 @@ export namespace Prisma {
     property?: PropertyOmit
     room?: RoomOmit
     roomAvailability?: RoomAvailabilityOmit
+    roomFacilities?: RoomFacilitiesOmit
     peakRate?: PeakRateOmit
     order?: OrderOmit
     orderItem?: OrderItemOmit
@@ -2087,12 +2178,14 @@ export namespace Prisma {
     availabilities: number
     peakRates: number
     orderItems: number
+    facilities: number
   }
 
   export type RoomCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     availabilities?: boolean | RoomCountOutputTypeCountAvailabilitiesArgs
     peakRates?: boolean | RoomCountOutputTypeCountPeakRatesArgs
     orderItems?: boolean | RoomCountOutputTypeCountOrderItemsArgs
+    facilities?: boolean | RoomCountOutputTypeCountFacilitiesArgs
   }
 
   // Custom InputTypes
@@ -2125,6 +2218,44 @@ export namespace Prisma {
    */
   export type RoomCountOutputTypeCountOrderItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: OrderItemWhereInput
+  }
+
+  /**
+   * RoomCountOutputType without action
+   */
+  export type RoomCountOutputTypeCountFacilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RoomFacilitiesWhereInput
+  }
+
+
+  /**
+   * Count Type RoomFacilitiesCountOutputType
+   */
+
+  export type RoomFacilitiesCountOutputType = {
+    rooms: number
+  }
+
+  export type RoomFacilitiesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    rooms?: boolean | RoomFacilitiesCountOutputTypeCountRoomsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * RoomFacilitiesCountOutputType without action
+   */
+  export type RoomFacilitiesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoomFacilitiesCountOutputType
+     */
+    select?: RoomFacilitiesCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * RoomFacilitiesCountOutputType without action
+   */
+  export type RoomFacilitiesCountOutputTypeCountRoomsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RoomWhereInput
   }
 
 
@@ -7087,10 +7218,12 @@ export namespace Prisma {
 
   export type RoomAvgAggregateOutputType = {
     price: number | null
+    number_of_rooms: number | null
   }
 
   export type RoomSumAggregateOutputType = {
     price: number | null
+    number_of_rooms: number | null
   }
 
   export type RoomMinAggregateOutputType = {
@@ -7099,6 +7232,7 @@ export namespace Prisma {
     description: string | null
     price: number | null
     propertyId: string | null
+    number_of_rooms: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -7109,6 +7243,7 @@ export namespace Prisma {
     description: string | null
     price: number | null
     propertyId: string | null
+    number_of_rooms: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -7119,6 +7254,7 @@ export namespace Prisma {
     description: number
     price: number
     propertyId: number
+    number_of_rooms: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -7127,10 +7263,12 @@ export namespace Prisma {
 
   export type RoomAvgAggregateInputType = {
     price?: true
+    number_of_rooms?: true
   }
 
   export type RoomSumAggregateInputType = {
     price?: true
+    number_of_rooms?: true
   }
 
   export type RoomMinAggregateInputType = {
@@ -7139,6 +7277,7 @@ export namespace Prisma {
     description?: true
     price?: true
     propertyId?: true
+    number_of_rooms?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -7149,6 +7288,7 @@ export namespace Prisma {
     description?: true
     price?: true
     propertyId?: true
+    number_of_rooms?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -7159,6 +7299,7 @@ export namespace Prisma {
     description?: true
     price?: true
     propertyId?: true
+    number_of_rooms?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -7256,6 +7397,7 @@ export namespace Prisma {
     description: string
     price: number
     propertyId: string
+    number_of_rooms: number
     createdAt: Date
     updatedAt: Date
     _count: RoomCountAggregateOutputType | null
@@ -7285,12 +7427,14 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     propertyId?: boolean
+    number_of_rooms?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     availabilities?: boolean | Room$availabilitiesArgs<ExtArgs>
     peakRates?: boolean | Room$peakRatesArgs<ExtArgs>
     orderItems?: boolean | Room$orderItemsArgs<ExtArgs>
+    facilities?: boolean | Room$facilitiesArgs<ExtArgs>
     _count?: boolean | RoomCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["room"]>
 
@@ -7300,6 +7444,7 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     propertyId?: boolean
+    number_of_rooms?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     property?: boolean | PropertyDefaultArgs<ExtArgs>
@@ -7311,6 +7456,7 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     propertyId?: boolean
+    number_of_rooms?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     property?: boolean | PropertyDefaultArgs<ExtArgs>
@@ -7322,16 +7468,18 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     propertyId?: boolean
+    number_of_rooms?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type RoomOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "price" | "propertyId" | "createdAt" | "updatedAt", ExtArgs["result"]["room"]>
+  export type RoomOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "price" | "propertyId" | "number_of_rooms" | "createdAt" | "updatedAt", ExtArgs["result"]["room"]>
   export type RoomInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     availabilities?: boolean | Room$availabilitiesArgs<ExtArgs>
     peakRates?: boolean | Room$peakRatesArgs<ExtArgs>
     orderItems?: boolean | Room$orderItemsArgs<ExtArgs>
+    facilities?: boolean | Room$facilitiesArgs<ExtArgs>
     _count?: boolean | RoomCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type RoomIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7348,6 +7496,7 @@ export namespace Prisma {
       availabilities: Prisma.$RoomAvailabilityPayload<ExtArgs>[]
       peakRates: Prisma.$PeakRatePayload<ExtArgs>[]
       orderItems: Prisma.$OrderItemPayload<ExtArgs>[]
+      facilities: Prisma.$RoomFacilitiesPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7355,6 +7504,7 @@ export namespace Prisma {
       description: string
       price: number
       propertyId: string
+      number_of_rooms: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["room"]>
@@ -7755,6 +7905,7 @@ export namespace Prisma {
     availabilities<T extends Room$availabilitiesArgs<ExtArgs> = {}>(args?: Subset<T, Room$availabilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoomAvailabilityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     peakRates<T extends Room$peakRatesArgs<ExtArgs> = {}>(args?: Subset<T, Room$peakRatesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PeakRatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     orderItems<T extends Room$orderItemsArgs<ExtArgs> = {}>(args?: Subset<T, Room$orderItemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrderItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    facilities<T extends Room$facilitiesArgs<ExtArgs> = {}>(args?: Subset<T, Room$facilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoomFacilitiesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7789,6 +7940,7 @@ export namespace Prisma {
     readonly description: FieldRef<"Room", 'String'>
     readonly price: FieldRef<"Room", 'Int'>
     readonly propertyId: FieldRef<"Room", 'String'>
+    readonly number_of_rooms: FieldRef<"Room", 'Int'>
     readonly createdAt: FieldRef<"Room", 'DateTime'>
     readonly updatedAt: FieldRef<"Room", 'DateTime'>
   }
@@ -8256,6 +8408,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: OrderItemScalarFieldEnum | OrderItemScalarFieldEnum[]
+  }
+
+  /**
+   * Room.facilities
+   */
+  export type Room$facilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoomFacilities
+     */
+    select?: RoomFacilitiesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoomFacilities
+     */
+    omit?: RoomFacilitiesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoomFacilitiesInclude<ExtArgs> | null
+    where?: RoomFacilitiesWhereInput
+    orderBy?: RoomFacilitiesOrderByWithRelationInput | RoomFacilitiesOrderByWithRelationInput[]
+    cursor?: RoomFacilitiesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RoomFacilitiesScalarFieldEnum | RoomFacilitiesScalarFieldEnum[]
   }
 
   /**
@@ -9319,6 +9495,1037 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: RoomAvailabilityInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model RoomFacilities
+   */
+
+  export type AggregateRoomFacilities = {
+    _count: RoomFacilitiesCountAggregateOutputType | null
+    _min: RoomFacilitiesMinAggregateOutputType | null
+    _max: RoomFacilitiesMaxAggregateOutputType | null
+  }
+
+  export type RoomFacilitiesMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+  }
+
+  export type RoomFacilitiesMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+  }
+
+  export type RoomFacilitiesCountAggregateOutputType = {
+    id: number
+    name: number
+    _all: number
+  }
+
+
+  export type RoomFacilitiesMinAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type RoomFacilitiesMaxAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type RoomFacilitiesCountAggregateInputType = {
+    id?: true
+    name?: true
+    _all?: true
+  }
+
+  export type RoomFacilitiesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RoomFacilities to aggregate.
+     */
+    where?: RoomFacilitiesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RoomFacilities to fetch.
+     */
+    orderBy?: RoomFacilitiesOrderByWithRelationInput | RoomFacilitiesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RoomFacilitiesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RoomFacilities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RoomFacilities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned RoomFacilities
+    **/
+    _count?: true | RoomFacilitiesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RoomFacilitiesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RoomFacilitiesMaxAggregateInputType
+  }
+
+  export type GetRoomFacilitiesAggregateType<T extends RoomFacilitiesAggregateArgs> = {
+        [P in keyof T & keyof AggregateRoomFacilities]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRoomFacilities[P]>
+      : GetScalarType<T[P], AggregateRoomFacilities[P]>
+  }
+
+
+
+
+  export type RoomFacilitiesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RoomFacilitiesWhereInput
+    orderBy?: RoomFacilitiesOrderByWithAggregationInput | RoomFacilitiesOrderByWithAggregationInput[]
+    by: RoomFacilitiesScalarFieldEnum[] | RoomFacilitiesScalarFieldEnum
+    having?: RoomFacilitiesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RoomFacilitiesCountAggregateInputType | true
+    _min?: RoomFacilitiesMinAggregateInputType
+    _max?: RoomFacilitiesMaxAggregateInputType
+  }
+
+  export type RoomFacilitiesGroupByOutputType = {
+    id: string
+    name: string
+    _count: RoomFacilitiesCountAggregateOutputType | null
+    _min: RoomFacilitiesMinAggregateOutputType | null
+    _max: RoomFacilitiesMaxAggregateOutputType | null
+  }
+
+  type GetRoomFacilitiesGroupByPayload<T extends RoomFacilitiesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RoomFacilitiesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RoomFacilitiesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RoomFacilitiesGroupByOutputType[P]>
+            : GetScalarType<T[P], RoomFacilitiesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RoomFacilitiesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    rooms?: boolean | RoomFacilities$roomsArgs<ExtArgs>
+    _count?: boolean | RoomFacilitiesCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["roomFacilities"]>
+
+  export type RoomFacilitiesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["roomFacilities"]>
+
+  export type RoomFacilitiesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["roomFacilities"]>
+
+  export type RoomFacilitiesSelectScalar = {
+    id?: boolean
+    name?: boolean
+  }
+
+  export type RoomFacilitiesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["roomFacilities"]>
+  export type RoomFacilitiesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    rooms?: boolean | RoomFacilities$roomsArgs<ExtArgs>
+    _count?: boolean | RoomFacilitiesCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type RoomFacilitiesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type RoomFacilitiesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $RoomFacilitiesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RoomFacilities"
+    objects: {
+      rooms: Prisma.$RoomPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+    }, ExtArgs["result"]["roomFacilities"]>
+    composites: {}
+  }
+
+  type RoomFacilitiesGetPayload<S extends boolean | null | undefined | RoomFacilitiesDefaultArgs> = $Result.GetResult<Prisma.$RoomFacilitiesPayload, S>
+
+  type RoomFacilitiesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RoomFacilitiesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RoomFacilitiesCountAggregateInputType | true
+    }
+
+  export interface RoomFacilitiesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RoomFacilities'], meta: { name: 'RoomFacilities' } }
+    /**
+     * Find zero or one RoomFacilities that matches the filter.
+     * @param {RoomFacilitiesFindUniqueArgs} args - Arguments to find a RoomFacilities
+     * @example
+     * // Get one RoomFacilities
+     * const roomFacilities = await prisma.roomFacilities.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RoomFacilitiesFindUniqueArgs>(args: SelectSubset<T, RoomFacilitiesFindUniqueArgs<ExtArgs>>): Prisma__RoomFacilitiesClient<$Result.GetResult<Prisma.$RoomFacilitiesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one RoomFacilities that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RoomFacilitiesFindUniqueOrThrowArgs} args - Arguments to find a RoomFacilities
+     * @example
+     * // Get one RoomFacilities
+     * const roomFacilities = await prisma.roomFacilities.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RoomFacilitiesFindUniqueOrThrowArgs>(args: SelectSubset<T, RoomFacilitiesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RoomFacilitiesClient<$Result.GetResult<Prisma.$RoomFacilitiesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RoomFacilities that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoomFacilitiesFindFirstArgs} args - Arguments to find a RoomFacilities
+     * @example
+     * // Get one RoomFacilities
+     * const roomFacilities = await prisma.roomFacilities.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RoomFacilitiesFindFirstArgs>(args?: SelectSubset<T, RoomFacilitiesFindFirstArgs<ExtArgs>>): Prisma__RoomFacilitiesClient<$Result.GetResult<Prisma.$RoomFacilitiesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RoomFacilities that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoomFacilitiesFindFirstOrThrowArgs} args - Arguments to find a RoomFacilities
+     * @example
+     * // Get one RoomFacilities
+     * const roomFacilities = await prisma.roomFacilities.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RoomFacilitiesFindFirstOrThrowArgs>(args?: SelectSubset<T, RoomFacilitiesFindFirstOrThrowArgs<ExtArgs>>): Prisma__RoomFacilitiesClient<$Result.GetResult<Prisma.$RoomFacilitiesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more RoomFacilities that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoomFacilitiesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all RoomFacilities
+     * const roomFacilities = await prisma.roomFacilities.findMany()
+     * 
+     * // Get first 10 RoomFacilities
+     * const roomFacilities = await prisma.roomFacilities.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const roomFacilitiesWithIdOnly = await prisma.roomFacilities.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RoomFacilitiesFindManyArgs>(args?: SelectSubset<T, RoomFacilitiesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoomFacilitiesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a RoomFacilities.
+     * @param {RoomFacilitiesCreateArgs} args - Arguments to create a RoomFacilities.
+     * @example
+     * // Create one RoomFacilities
+     * const RoomFacilities = await prisma.roomFacilities.create({
+     *   data: {
+     *     // ... data to create a RoomFacilities
+     *   }
+     * })
+     * 
+     */
+    create<T extends RoomFacilitiesCreateArgs>(args: SelectSubset<T, RoomFacilitiesCreateArgs<ExtArgs>>): Prisma__RoomFacilitiesClient<$Result.GetResult<Prisma.$RoomFacilitiesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many RoomFacilities.
+     * @param {RoomFacilitiesCreateManyArgs} args - Arguments to create many RoomFacilities.
+     * @example
+     * // Create many RoomFacilities
+     * const roomFacilities = await prisma.roomFacilities.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RoomFacilitiesCreateManyArgs>(args?: SelectSubset<T, RoomFacilitiesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many RoomFacilities and returns the data saved in the database.
+     * @param {RoomFacilitiesCreateManyAndReturnArgs} args - Arguments to create many RoomFacilities.
+     * @example
+     * // Create many RoomFacilities
+     * const roomFacilities = await prisma.roomFacilities.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many RoomFacilities and only return the `id`
+     * const roomFacilitiesWithIdOnly = await prisma.roomFacilities.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends RoomFacilitiesCreateManyAndReturnArgs>(args?: SelectSubset<T, RoomFacilitiesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoomFacilitiesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a RoomFacilities.
+     * @param {RoomFacilitiesDeleteArgs} args - Arguments to delete one RoomFacilities.
+     * @example
+     * // Delete one RoomFacilities
+     * const RoomFacilities = await prisma.roomFacilities.delete({
+     *   where: {
+     *     // ... filter to delete one RoomFacilities
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RoomFacilitiesDeleteArgs>(args: SelectSubset<T, RoomFacilitiesDeleteArgs<ExtArgs>>): Prisma__RoomFacilitiesClient<$Result.GetResult<Prisma.$RoomFacilitiesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one RoomFacilities.
+     * @param {RoomFacilitiesUpdateArgs} args - Arguments to update one RoomFacilities.
+     * @example
+     * // Update one RoomFacilities
+     * const roomFacilities = await prisma.roomFacilities.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RoomFacilitiesUpdateArgs>(args: SelectSubset<T, RoomFacilitiesUpdateArgs<ExtArgs>>): Prisma__RoomFacilitiesClient<$Result.GetResult<Prisma.$RoomFacilitiesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more RoomFacilities.
+     * @param {RoomFacilitiesDeleteManyArgs} args - Arguments to filter RoomFacilities to delete.
+     * @example
+     * // Delete a few RoomFacilities
+     * const { count } = await prisma.roomFacilities.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RoomFacilitiesDeleteManyArgs>(args?: SelectSubset<T, RoomFacilitiesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RoomFacilities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoomFacilitiesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many RoomFacilities
+     * const roomFacilities = await prisma.roomFacilities.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RoomFacilitiesUpdateManyArgs>(args: SelectSubset<T, RoomFacilitiesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RoomFacilities and returns the data updated in the database.
+     * @param {RoomFacilitiesUpdateManyAndReturnArgs} args - Arguments to update many RoomFacilities.
+     * @example
+     * // Update many RoomFacilities
+     * const roomFacilities = await prisma.roomFacilities.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more RoomFacilities and only return the `id`
+     * const roomFacilitiesWithIdOnly = await prisma.roomFacilities.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends RoomFacilitiesUpdateManyAndReturnArgs>(args: SelectSubset<T, RoomFacilitiesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoomFacilitiesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one RoomFacilities.
+     * @param {RoomFacilitiesUpsertArgs} args - Arguments to update or create a RoomFacilities.
+     * @example
+     * // Update or create a RoomFacilities
+     * const roomFacilities = await prisma.roomFacilities.upsert({
+     *   create: {
+     *     // ... data to create a RoomFacilities
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the RoomFacilities we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RoomFacilitiesUpsertArgs>(args: SelectSubset<T, RoomFacilitiesUpsertArgs<ExtArgs>>): Prisma__RoomFacilitiesClient<$Result.GetResult<Prisma.$RoomFacilitiesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of RoomFacilities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoomFacilitiesCountArgs} args - Arguments to filter RoomFacilities to count.
+     * @example
+     * // Count the number of RoomFacilities
+     * const count = await prisma.roomFacilities.count({
+     *   where: {
+     *     // ... the filter for the RoomFacilities we want to count
+     *   }
+     * })
+    **/
+    count<T extends RoomFacilitiesCountArgs>(
+      args?: Subset<T, RoomFacilitiesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RoomFacilitiesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a RoomFacilities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoomFacilitiesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RoomFacilitiesAggregateArgs>(args: Subset<T, RoomFacilitiesAggregateArgs>): Prisma.PrismaPromise<GetRoomFacilitiesAggregateType<T>>
+
+    /**
+     * Group by RoomFacilities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoomFacilitiesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RoomFacilitiesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RoomFacilitiesGroupByArgs['orderBy'] }
+        : { orderBy?: RoomFacilitiesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RoomFacilitiesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRoomFacilitiesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the RoomFacilities model
+   */
+  readonly fields: RoomFacilitiesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for RoomFacilities.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RoomFacilitiesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    rooms<T extends RoomFacilities$roomsArgs<ExtArgs> = {}>(args?: Subset<T, RoomFacilities$roomsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoomPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the RoomFacilities model
+   */
+  interface RoomFacilitiesFieldRefs {
+    readonly id: FieldRef<"RoomFacilities", 'String'>
+    readonly name: FieldRef<"RoomFacilities", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * RoomFacilities findUnique
+   */
+  export type RoomFacilitiesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoomFacilities
+     */
+    select?: RoomFacilitiesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoomFacilities
+     */
+    omit?: RoomFacilitiesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoomFacilitiesInclude<ExtArgs> | null
+    /**
+     * Filter, which RoomFacilities to fetch.
+     */
+    where: RoomFacilitiesWhereUniqueInput
+  }
+
+  /**
+   * RoomFacilities findUniqueOrThrow
+   */
+  export type RoomFacilitiesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoomFacilities
+     */
+    select?: RoomFacilitiesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoomFacilities
+     */
+    omit?: RoomFacilitiesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoomFacilitiesInclude<ExtArgs> | null
+    /**
+     * Filter, which RoomFacilities to fetch.
+     */
+    where: RoomFacilitiesWhereUniqueInput
+  }
+
+  /**
+   * RoomFacilities findFirst
+   */
+  export type RoomFacilitiesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoomFacilities
+     */
+    select?: RoomFacilitiesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoomFacilities
+     */
+    omit?: RoomFacilitiesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoomFacilitiesInclude<ExtArgs> | null
+    /**
+     * Filter, which RoomFacilities to fetch.
+     */
+    where?: RoomFacilitiesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RoomFacilities to fetch.
+     */
+    orderBy?: RoomFacilitiesOrderByWithRelationInput | RoomFacilitiesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RoomFacilities.
+     */
+    cursor?: RoomFacilitiesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RoomFacilities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RoomFacilities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RoomFacilities.
+     */
+    distinct?: RoomFacilitiesScalarFieldEnum | RoomFacilitiesScalarFieldEnum[]
+  }
+
+  /**
+   * RoomFacilities findFirstOrThrow
+   */
+  export type RoomFacilitiesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoomFacilities
+     */
+    select?: RoomFacilitiesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoomFacilities
+     */
+    omit?: RoomFacilitiesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoomFacilitiesInclude<ExtArgs> | null
+    /**
+     * Filter, which RoomFacilities to fetch.
+     */
+    where?: RoomFacilitiesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RoomFacilities to fetch.
+     */
+    orderBy?: RoomFacilitiesOrderByWithRelationInput | RoomFacilitiesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RoomFacilities.
+     */
+    cursor?: RoomFacilitiesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RoomFacilities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RoomFacilities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RoomFacilities.
+     */
+    distinct?: RoomFacilitiesScalarFieldEnum | RoomFacilitiesScalarFieldEnum[]
+  }
+
+  /**
+   * RoomFacilities findMany
+   */
+  export type RoomFacilitiesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoomFacilities
+     */
+    select?: RoomFacilitiesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoomFacilities
+     */
+    omit?: RoomFacilitiesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoomFacilitiesInclude<ExtArgs> | null
+    /**
+     * Filter, which RoomFacilities to fetch.
+     */
+    where?: RoomFacilitiesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RoomFacilities to fetch.
+     */
+    orderBy?: RoomFacilitiesOrderByWithRelationInput | RoomFacilitiesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing RoomFacilities.
+     */
+    cursor?: RoomFacilitiesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RoomFacilities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RoomFacilities.
+     */
+    skip?: number
+    distinct?: RoomFacilitiesScalarFieldEnum | RoomFacilitiesScalarFieldEnum[]
+  }
+
+  /**
+   * RoomFacilities create
+   */
+  export type RoomFacilitiesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoomFacilities
+     */
+    select?: RoomFacilitiesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoomFacilities
+     */
+    omit?: RoomFacilitiesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoomFacilitiesInclude<ExtArgs> | null
+    /**
+     * The data needed to create a RoomFacilities.
+     */
+    data: XOR<RoomFacilitiesCreateInput, RoomFacilitiesUncheckedCreateInput>
+  }
+
+  /**
+   * RoomFacilities createMany
+   */
+  export type RoomFacilitiesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many RoomFacilities.
+     */
+    data: RoomFacilitiesCreateManyInput | RoomFacilitiesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * RoomFacilities createManyAndReturn
+   */
+  export type RoomFacilitiesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoomFacilities
+     */
+    select?: RoomFacilitiesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoomFacilities
+     */
+    omit?: RoomFacilitiesOmit<ExtArgs> | null
+    /**
+     * The data used to create many RoomFacilities.
+     */
+    data: RoomFacilitiesCreateManyInput | RoomFacilitiesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * RoomFacilities update
+   */
+  export type RoomFacilitiesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoomFacilities
+     */
+    select?: RoomFacilitiesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoomFacilities
+     */
+    omit?: RoomFacilitiesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoomFacilitiesInclude<ExtArgs> | null
+    /**
+     * The data needed to update a RoomFacilities.
+     */
+    data: XOR<RoomFacilitiesUpdateInput, RoomFacilitiesUncheckedUpdateInput>
+    /**
+     * Choose, which RoomFacilities to update.
+     */
+    where: RoomFacilitiesWhereUniqueInput
+  }
+
+  /**
+   * RoomFacilities updateMany
+   */
+  export type RoomFacilitiesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update RoomFacilities.
+     */
+    data: XOR<RoomFacilitiesUpdateManyMutationInput, RoomFacilitiesUncheckedUpdateManyInput>
+    /**
+     * Filter which RoomFacilities to update
+     */
+    where?: RoomFacilitiesWhereInput
+    /**
+     * Limit how many RoomFacilities to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * RoomFacilities updateManyAndReturn
+   */
+  export type RoomFacilitiesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoomFacilities
+     */
+    select?: RoomFacilitiesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoomFacilities
+     */
+    omit?: RoomFacilitiesOmit<ExtArgs> | null
+    /**
+     * The data used to update RoomFacilities.
+     */
+    data: XOR<RoomFacilitiesUpdateManyMutationInput, RoomFacilitiesUncheckedUpdateManyInput>
+    /**
+     * Filter which RoomFacilities to update
+     */
+    where?: RoomFacilitiesWhereInput
+    /**
+     * Limit how many RoomFacilities to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * RoomFacilities upsert
+   */
+  export type RoomFacilitiesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoomFacilities
+     */
+    select?: RoomFacilitiesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoomFacilities
+     */
+    omit?: RoomFacilitiesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoomFacilitiesInclude<ExtArgs> | null
+    /**
+     * The filter to search for the RoomFacilities to update in case it exists.
+     */
+    where: RoomFacilitiesWhereUniqueInput
+    /**
+     * In case the RoomFacilities found by the `where` argument doesn't exist, create a new RoomFacilities with this data.
+     */
+    create: XOR<RoomFacilitiesCreateInput, RoomFacilitiesUncheckedCreateInput>
+    /**
+     * In case the RoomFacilities was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RoomFacilitiesUpdateInput, RoomFacilitiesUncheckedUpdateInput>
+  }
+
+  /**
+   * RoomFacilities delete
+   */
+  export type RoomFacilitiesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoomFacilities
+     */
+    select?: RoomFacilitiesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoomFacilities
+     */
+    omit?: RoomFacilitiesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoomFacilitiesInclude<ExtArgs> | null
+    /**
+     * Filter which RoomFacilities to delete.
+     */
+    where: RoomFacilitiesWhereUniqueInput
+  }
+
+  /**
+   * RoomFacilities deleteMany
+   */
+  export type RoomFacilitiesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RoomFacilities to delete
+     */
+    where?: RoomFacilitiesWhereInput
+    /**
+     * Limit how many RoomFacilities to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * RoomFacilities.rooms
+   */
+  export type RoomFacilities$roomsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Room
+     */
+    select?: RoomSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Room
+     */
+    omit?: RoomOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoomInclude<ExtArgs> | null
+    where?: RoomWhereInput
+    orderBy?: RoomOrderByWithRelationInput | RoomOrderByWithRelationInput[]
+    cursor?: RoomWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RoomScalarFieldEnum | RoomScalarFieldEnum[]
+  }
+
+  /**
+   * RoomFacilities without action
+   */
+  export type RoomFacilitiesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoomFacilities
+     */
+    select?: RoomFacilitiesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoomFacilities
+     */
+    omit?: RoomFacilitiesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoomFacilitiesInclude<ExtArgs> | null
   }
 
 
@@ -16067,6 +17274,7 @@ export namespace Prisma {
     description: 'description',
     price: 'price',
     propertyId: 'propertyId',
+    number_of_rooms: 'number_of_rooms',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -16082,6 +17290,14 @@ export namespace Prisma {
   };
 
   export type RoomAvailabilityScalarFieldEnum = (typeof RoomAvailabilityScalarFieldEnum)[keyof typeof RoomAvailabilityScalarFieldEnum]
+
+
+  export const RoomFacilitiesScalarFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type RoomFacilitiesScalarFieldEnum = (typeof RoomFacilitiesScalarFieldEnum)[keyof typeof RoomFacilitiesScalarFieldEnum]
 
 
   export const PeakRateScalarFieldEnum: {
@@ -16708,12 +17924,14 @@ export namespace Prisma {
     description?: StringFilter<"Room"> | string
     price?: IntFilter<"Room"> | number
     propertyId?: StringFilter<"Room"> | string
+    number_of_rooms?: IntFilter<"Room"> | number
     createdAt?: DateTimeFilter<"Room"> | Date | string
     updatedAt?: DateTimeFilter<"Room"> | Date | string
     property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
     availabilities?: RoomAvailabilityListRelationFilter
     peakRates?: PeakRateListRelationFilter
     orderItems?: OrderItemListRelationFilter
+    facilities?: RoomFacilitiesListRelationFilter
   }
 
   export type RoomOrderByWithRelationInput = {
@@ -16722,12 +17940,14 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     propertyId?: SortOrder
+    number_of_rooms?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     property?: PropertyOrderByWithRelationInput
     availabilities?: RoomAvailabilityOrderByRelationAggregateInput
     peakRates?: PeakRateOrderByRelationAggregateInput
     orderItems?: OrderItemOrderByRelationAggregateInput
+    facilities?: RoomFacilitiesOrderByRelationAggregateInput
   }
 
   export type RoomWhereUniqueInput = Prisma.AtLeast<{
@@ -16739,12 +17959,14 @@ export namespace Prisma {
     description?: StringFilter<"Room"> | string
     price?: IntFilter<"Room"> | number
     propertyId?: StringFilter<"Room"> | string
+    number_of_rooms?: IntFilter<"Room"> | number
     createdAt?: DateTimeFilter<"Room"> | Date | string
     updatedAt?: DateTimeFilter<"Room"> | Date | string
     property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
     availabilities?: RoomAvailabilityListRelationFilter
     peakRates?: PeakRateListRelationFilter
     orderItems?: OrderItemListRelationFilter
+    facilities?: RoomFacilitiesListRelationFilter
   }, "id">
 
   export type RoomOrderByWithAggregationInput = {
@@ -16753,6 +17975,7 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     propertyId?: SortOrder
+    number_of_rooms?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: RoomCountOrderByAggregateInput
@@ -16771,6 +17994,7 @@ export namespace Prisma {
     description?: StringWithAggregatesFilter<"Room"> | string
     price?: IntWithAggregatesFilter<"Room"> | number
     propertyId?: StringWithAggregatesFilter<"Room"> | string
+    number_of_rooms?: IntWithAggregatesFilter<"Room"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Room"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Room"> | Date | string
   }
@@ -16824,6 +18048,46 @@ export namespace Prisma {
     roomId?: StringWithAggregatesFilter<"RoomAvailability"> | string
     date?: DateTimeWithAggregatesFilter<"RoomAvailability"> | Date | string
     isAvailable?: BoolWithAggregatesFilter<"RoomAvailability"> | boolean
+  }
+
+  export type RoomFacilitiesWhereInput = {
+    AND?: RoomFacilitiesWhereInput | RoomFacilitiesWhereInput[]
+    OR?: RoomFacilitiesWhereInput[]
+    NOT?: RoomFacilitiesWhereInput | RoomFacilitiesWhereInput[]
+    id?: StringFilter<"RoomFacilities"> | string
+    name?: StringFilter<"RoomFacilities"> | string
+    rooms?: RoomListRelationFilter
+  }
+
+  export type RoomFacilitiesOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    rooms?: RoomOrderByRelationAggregateInput
+  }
+
+  export type RoomFacilitiesWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: RoomFacilitiesWhereInput | RoomFacilitiesWhereInput[]
+    OR?: RoomFacilitiesWhereInput[]
+    NOT?: RoomFacilitiesWhereInput | RoomFacilitiesWhereInput[]
+    name?: StringFilter<"RoomFacilities"> | string
+    rooms?: RoomListRelationFilter
+  }, "id">
+
+  export type RoomFacilitiesOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    _count?: RoomFacilitiesCountOrderByAggregateInput
+    _max?: RoomFacilitiesMaxOrderByAggregateInput
+    _min?: RoomFacilitiesMinOrderByAggregateInput
+  }
+
+  export type RoomFacilitiesScalarWhereWithAggregatesInput = {
+    AND?: RoomFacilitiesScalarWhereWithAggregatesInput | RoomFacilitiesScalarWhereWithAggregatesInput[]
+    OR?: RoomFacilitiesScalarWhereWithAggregatesInput[]
+    NOT?: RoomFacilitiesScalarWhereWithAggregatesInput | RoomFacilitiesScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"RoomFacilities"> | string
+    name?: StringWithAggregatesFilter<"RoomFacilities"> | string
   }
 
   export type PeakRateWhereInput = {
@@ -17640,12 +18904,14 @@ export namespace Prisma {
     name: string
     description: string
     price: number
+    number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
     property: PropertyCreateNestedOneWithoutRoomsInput
     availabilities?: RoomAvailabilityCreateNestedManyWithoutRoomInput
     peakRates?: PeakRateCreateNestedManyWithoutRoomInput
     orderItems?: OrderItemCreateNestedManyWithoutRoomInput
+    facilities?: RoomFacilitiesCreateNestedManyWithoutRoomsInput
   }
 
   export type RoomUncheckedCreateInput = {
@@ -17654,11 +18920,13 @@ export namespace Prisma {
     description: string
     price: number
     propertyId: string
+    number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
     availabilities?: RoomAvailabilityUncheckedCreateNestedManyWithoutRoomInput
     peakRates?: PeakRateUncheckedCreateNestedManyWithoutRoomInput
     orderItems?: OrderItemUncheckedCreateNestedManyWithoutRoomInput
+    facilities?: RoomFacilitiesUncheckedCreateNestedManyWithoutRoomsInput
   }
 
   export type RoomUpdateInput = {
@@ -17666,12 +18934,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     property?: PropertyUpdateOneRequiredWithoutRoomsNestedInput
     availabilities?: RoomAvailabilityUpdateManyWithoutRoomNestedInput
     peakRates?: PeakRateUpdateManyWithoutRoomNestedInput
     orderItems?: OrderItemUpdateManyWithoutRoomNestedInput
+    facilities?: RoomFacilitiesUpdateManyWithoutRoomsNestedInput
   }
 
   export type RoomUncheckedUpdateInput = {
@@ -17680,11 +18950,13 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     propertyId?: StringFieldUpdateOperationsInput | string
+    number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     availabilities?: RoomAvailabilityUncheckedUpdateManyWithoutRoomNestedInput
     peakRates?: PeakRateUncheckedUpdateManyWithoutRoomNestedInput
     orderItems?: OrderItemUncheckedUpdateManyWithoutRoomNestedInput
+    facilities?: RoomFacilitiesUncheckedUpdateManyWithoutRoomsNestedInput
   }
 
   export type RoomCreateManyInput = {
@@ -17693,6 +18965,7 @@ export namespace Prisma {
     description: string
     price: number
     propertyId: string
+    number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -17702,6 +18975,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -17712,6 +18986,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     propertyId?: StringFieldUpdateOperationsInput | string
+    number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -17762,6 +19037,45 @@ export namespace Prisma {
     roomId?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type RoomFacilitiesCreateInput = {
+    id?: string
+    name: string
+    rooms?: RoomCreateNestedManyWithoutFacilitiesInput
+  }
+
+  export type RoomFacilitiesUncheckedCreateInput = {
+    id?: string
+    name: string
+    rooms?: RoomUncheckedCreateNestedManyWithoutFacilitiesInput
+  }
+
+  export type RoomFacilitiesUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    rooms?: RoomUpdateManyWithoutFacilitiesNestedInput
+  }
+
+  export type RoomFacilitiesUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    rooms?: RoomUncheckedUpdateManyWithoutFacilitiesNestedInput
+  }
+
+  export type RoomFacilitiesCreateManyInput = {
+    id?: string
+    name: string
+  }
+
+  export type RoomFacilitiesUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type RoomFacilitiesUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
   }
 
   export type PeakRateCreateInput = {
@@ -18634,6 +19948,12 @@ export namespace Prisma {
     none?: OrderItemWhereInput
   }
 
+  export type RoomFacilitiesListRelationFilter = {
+    every?: RoomFacilitiesWhereInput
+    some?: RoomFacilitiesWhereInput
+    none?: RoomFacilitiesWhereInput
+  }
+
   export type RoomAvailabilityOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -18646,18 +19966,24 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type RoomFacilitiesOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type RoomCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
     price?: SortOrder
     propertyId?: SortOrder
+    number_of_rooms?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type RoomAvgOrderByAggregateInput = {
     price?: SortOrder
+    number_of_rooms?: SortOrder
   }
 
   export type RoomMaxOrderByAggregateInput = {
@@ -18666,6 +19992,7 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     propertyId?: SortOrder
+    number_of_rooms?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -18676,12 +20003,14 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     propertyId?: SortOrder
+    number_of_rooms?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type RoomSumOrderByAggregateInput = {
     price?: SortOrder
+    number_of_rooms?: SortOrder
   }
 
   export type RoomScalarRelationFilter = {
@@ -18713,6 +20042,21 @@ export namespace Prisma {
     roomId?: SortOrder
     date?: SortOrder
     isAvailable?: SortOrder
+  }
+
+  export type RoomFacilitiesCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type RoomFacilitiesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type RoomFacilitiesMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
   }
 
   export type EnumRateTypeFilter<$PrismaModel = never> = {
@@ -19483,6 +20827,12 @@ export namespace Prisma {
     connect?: OrderItemWhereUniqueInput | OrderItemWhereUniqueInput[]
   }
 
+  export type RoomFacilitiesCreateNestedManyWithoutRoomsInput = {
+    create?: XOR<RoomFacilitiesCreateWithoutRoomsInput, RoomFacilitiesUncheckedCreateWithoutRoomsInput> | RoomFacilitiesCreateWithoutRoomsInput[] | RoomFacilitiesUncheckedCreateWithoutRoomsInput[]
+    connectOrCreate?: RoomFacilitiesCreateOrConnectWithoutRoomsInput | RoomFacilitiesCreateOrConnectWithoutRoomsInput[]
+    connect?: RoomFacilitiesWhereUniqueInput | RoomFacilitiesWhereUniqueInput[]
+  }
+
   export type RoomAvailabilityUncheckedCreateNestedManyWithoutRoomInput = {
     create?: XOR<RoomAvailabilityCreateWithoutRoomInput, RoomAvailabilityUncheckedCreateWithoutRoomInput> | RoomAvailabilityCreateWithoutRoomInput[] | RoomAvailabilityUncheckedCreateWithoutRoomInput[]
     connectOrCreate?: RoomAvailabilityCreateOrConnectWithoutRoomInput | RoomAvailabilityCreateOrConnectWithoutRoomInput[]
@@ -19502,6 +20852,12 @@ export namespace Prisma {
     connectOrCreate?: OrderItemCreateOrConnectWithoutRoomInput | OrderItemCreateOrConnectWithoutRoomInput[]
     createMany?: OrderItemCreateManyRoomInputEnvelope
     connect?: OrderItemWhereUniqueInput | OrderItemWhereUniqueInput[]
+  }
+
+  export type RoomFacilitiesUncheckedCreateNestedManyWithoutRoomsInput = {
+    create?: XOR<RoomFacilitiesCreateWithoutRoomsInput, RoomFacilitiesUncheckedCreateWithoutRoomsInput> | RoomFacilitiesCreateWithoutRoomsInput[] | RoomFacilitiesUncheckedCreateWithoutRoomsInput[]
+    connectOrCreate?: RoomFacilitiesCreateOrConnectWithoutRoomsInput | RoomFacilitiesCreateOrConnectWithoutRoomsInput[]
+    connect?: RoomFacilitiesWhereUniqueInput | RoomFacilitiesWhereUniqueInput[]
   }
 
   export type PropertyUpdateOneRequiredWithoutRoomsNestedInput = {
@@ -19554,6 +20910,19 @@ export namespace Prisma {
     deleteMany?: OrderItemScalarWhereInput | OrderItemScalarWhereInput[]
   }
 
+  export type RoomFacilitiesUpdateManyWithoutRoomsNestedInput = {
+    create?: XOR<RoomFacilitiesCreateWithoutRoomsInput, RoomFacilitiesUncheckedCreateWithoutRoomsInput> | RoomFacilitiesCreateWithoutRoomsInput[] | RoomFacilitiesUncheckedCreateWithoutRoomsInput[]
+    connectOrCreate?: RoomFacilitiesCreateOrConnectWithoutRoomsInput | RoomFacilitiesCreateOrConnectWithoutRoomsInput[]
+    upsert?: RoomFacilitiesUpsertWithWhereUniqueWithoutRoomsInput | RoomFacilitiesUpsertWithWhereUniqueWithoutRoomsInput[]
+    set?: RoomFacilitiesWhereUniqueInput | RoomFacilitiesWhereUniqueInput[]
+    disconnect?: RoomFacilitiesWhereUniqueInput | RoomFacilitiesWhereUniqueInput[]
+    delete?: RoomFacilitiesWhereUniqueInput | RoomFacilitiesWhereUniqueInput[]
+    connect?: RoomFacilitiesWhereUniqueInput | RoomFacilitiesWhereUniqueInput[]
+    update?: RoomFacilitiesUpdateWithWhereUniqueWithoutRoomsInput | RoomFacilitiesUpdateWithWhereUniqueWithoutRoomsInput[]
+    updateMany?: RoomFacilitiesUpdateManyWithWhereWithoutRoomsInput | RoomFacilitiesUpdateManyWithWhereWithoutRoomsInput[]
+    deleteMany?: RoomFacilitiesScalarWhereInput | RoomFacilitiesScalarWhereInput[]
+  }
+
   export type RoomAvailabilityUncheckedUpdateManyWithoutRoomNestedInput = {
     create?: XOR<RoomAvailabilityCreateWithoutRoomInput, RoomAvailabilityUncheckedCreateWithoutRoomInput> | RoomAvailabilityCreateWithoutRoomInput[] | RoomAvailabilityUncheckedCreateWithoutRoomInput[]
     connectOrCreate?: RoomAvailabilityCreateOrConnectWithoutRoomInput | RoomAvailabilityCreateOrConnectWithoutRoomInput[]
@@ -19596,6 +20965,19 @@ export namespace Prisma {
     deleteMany?: OrderItemScalarWhereInput | OrderItemScalarWhereInput[]
   }
 
+  export type RoomFacilitiesUncheckedUpdateManyWithoutRoomsNestedInput = {
+    create?: XOR<RoomFacilitiesCreateWithoutRoomsInput, RoomFacilitiesUncheckedCreateWithoutRoomsInput> | RoomFacilitiesCreateWithoutRoomsInput[] | RoomFacilitiesUncheckedCreateWithoutRoomsInput[]
+    connectOrCreate?: RoomFacilitiesCreateOrConnectWithoutRoomsInput | RoomFacilitiesCreateOrConnectWithoutRoomsInput[]
+    upsert?: RoomFacilitiesUpsertWithWhereUniqueWithoutRoomsInput | RoomFacilitiesUpsertWithWhereUniqueWithoutRoomsInput[]
+    set?: RoomFacilitiesWhereUniqueInput | RoomFacilitiesWhereUniqueInput[]
+    disconnect?: RoomFacilitiesWhereUniqueInput | RoomFacilitiesWhereUniqueInput[]
+    delete?: RoomFacilitiesWhereUniqueInput | RoomFacilitiesWhereUniqueInput[]
+    connect?: RoomFacilitiesWhereUniqueInput | RoomFacilitiesWhereUniqueInput[]
+    update?: RoomFacilitiesUpdateWithWhereUniqueWithoutRoomsInput | RoomFacilitiesUpdateWithWhereUniqueWithoutRoomsInput[]
+    updateMany?: RoomFacilitiesUpdateManyWithWhereWithoutRoomsInput | RoomFacilitiesUpdateManyWithWhereWithoutRoomsInput[]
+    deleteMany?: RoomFacilitiesScalarWhereInput | RoomFacilitiesScalarWhereInput[]
+  }
+
   export type RoomCreateNestedOneWithoutAvailabilitiesInput = {
     create?: XOR<RoomCreateWithoutAvailabilitiesInput, RoomUncheckedCreateWithoutAvailabilitiesInput>
     connectOrCreate?: RoomCreateOrConnectWithoutAvailabilitiesInput
@@ -19608,6 +20990,44 @@ export namespace Prisma {
     upsert?: RoomUpsertWithoutAvailabilitiesInput
     connect?: RoomWhereUniqueInput
     update?: XOR<XOR<RoomUpdateToOneWithWhereWithoutAvailabilitiesInput, RoomUpdateWithoutAvailabilitiesInput>, RoomUncheckedUpdateWithoutAvailabilitiesInput>
+  }
+
+  export type RoomCreateNestedManyWithoutFacilitiesInput = {
+    create?: XOR<RoomCreateWithoutFacilitiesInput, RoomUncheckedCreateWithoutFacilitiesInput> | RoomCreateWithoutFacilitiesInput[] | RoomUncheckedCreateWithoutFacilitiesInput[]
+    connectOrCreate?: RoomCreateOrConnectWithoutFacilitiesInput | RoomCreateOrConnectWithoutFacilitiesInput[]
+    connect?: RoomWhereUniqueInput | RoomWhereUniqueInput[]
+  }
+
+  export type RoomUncheckedCreateNestedManyWithoutFacilitiesInput = {
+    create?: XOR<RoomCreateWithoutFacilitiesInput, RoomUncheckedCreateWithoutFacilitiesInput> | RoomCreateWithoutFacilitiesInput[] | RoomUncheckedCreateWithoutFacilitiesInput[]
+    connectOrCreate?: RoomCreateOrConnectWithoutFacilitiesInput | RoomCreateOrConnectWithoutFacilitiesInput[]
+    connect?: RoomWhereUniqueInput | RoomWhereUniqueInput[]
+  }
+
+  export type RoomUpdateManyWithoutFacilitiesNestedInput = {
+    create?: XOR<RoomCreateWithoutFacilitiesInput, RoomUncheckedCreateWithoutFacilitiesInput> | RoomCreateWithoutFacilitiesInput[] | RoomUncheckedCreateWithoutFacilitiesInput[]
+    connectOrCreate?: RoomCreateOrConnectWithoutFacilitiesInput | RoomCreateOrConnectWithoutFacilitiesInput[]
+    upsert?: RoomUpsertWithWhereUniqueWithoutFacilitiesInput | RoomUpsertWithWhereUniqueWithoutFacilitiesInput[]
+    set?: RoomWhereUniqueInput | RoomWhereUniqueInput[]
+    disconnect?: RoomWhereUniqueInput | RoomWhereUniqueInput[]
+    delete?: RoomWhereUniqueInput | RoomWhereUniqueInput[]
+    connect?: RoomWhereUniqueInput | RoomWhereUniqueInput[]
+    update?: RoomUpdateWithWhereUniqueWithoutFacilitiesInput | RoomUpdateWithWhereUniqueWithoutFacilitiesInput[]
+    updateMany?: RoomUpdateManyWithWhereWithoutFacilitiesInput | RoomUpdateManyWithWhereWithoutFacilitiesInput[]
+    deleteMany?: RoomScalarWhereInput | RoomScalarWhereInput[]
+  }
+
+  export type RoomUncheckedUpdateManyWithoutFacilitiesNestedInput = {
+    create?: XOR<RoomCreateWithoutFacilitiesInput, RoomUncheckedCreateWithoutFacilitiesInput> | RoomCreateWithoutFacilitiesInput[] | RoomUncheckedCreateWithoutFacilitiesInput[]
+    connectOrCreate?: RoomCreateOrConnectWithoutFacilitiesInput | RoomCreateOrConnectWithoutFacilitiesInput[]
+    upsert?: RoomUpsertWithWhereUniqueWithoutFacilitiesInput | RoomUpsertWithWhereUniqueWithoutFacilitiesInput[]
+    set?: RoomWhereUniqueInput | RoomWhereUniqueInput[]
+    disconnect?: RoomWhereUniqueInput | RoomWhereUniqueInput[]
+    delete?: RoomWhereUniqueInput | RoomWhereUniqueInput[]
+    connect?: RoomWhereUniqueInput | RoomWhereUniqueInput[]
+    update?: RoomUpdateWithWhereUniqueWithoutFacilitiesInput | RoomUpdateWithWhereUniqueWithoutFacilitiesInput[]
+    updateMany?: RoomUpdateManyWithWhereWithoutFacilitiesInput | RoomUpdateManyWithWhereWithoutFacilitiesInput[]
+    deleteMany?: RoomScalarWhereInput | RoomScalarWhereInput[]
   }
 
   export type RoomCreateNestedOneWithoutPeakRatesInput = {
@@ -20686,11 +22106,13 @@ export namespace Prisma {
     name: string
     description: string
     price: number
+    number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
     availabilities?: RoomAvailabilityCreateNestedManyWithoutRoomInput
     peakRates?: PeakRateCreateNestedManyWithoutRoomInput
     orderItems?: OrderItemCreateNestedManyWithoutRoomInput
+    facilities?: RoomFacilitiesCreateNestedManyWithoutRoomsInput
   }
 
   export type RoomUncheckedCreateWithoutPropertyInput = {
@@ -20698,11 +22120,13 @@ export namespace Prisma {
     name: string
     description: string
     price: number
+    number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
     availabilities?: RoomAvailabilityUncheckedCreateNestedManyWithoutRoomInput
     peakRates?: PeakRateUncheckedCreateNestedManyWithoutRoomInput
     orderItems?: OrderItemUncheckedCreateNestedManyWithoutRoomInput
+    facilities?: RoomFacilitiesUncheckedCreateNestedManyWithoutRoomsInput
   }
 
   export type RoomCreateOrConnectWithoutPropertyInput = {
@@ -20885,6 +22309,7 @@ export namespace Prisma {
     description?: StringFilter<"Room"> | string
     price?: IntFilter<"Room"> | number
     propertyId?: StringFilter<"Room"> | string
+    number_of_rooms?: IntFilter<"Room"> | number
     createdAt?: DateTimeFilter<"Room"> | Date | string
     updatedAt?: DateTimeFilter<"Room"> | Date | string
   }
@@ -21044,6 +22469,21 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type RoomFacilitiesCreateWithoutRoomsInput = {
+    id?: string
+    name: string
+  }
+
+  export type RoomFacilitiesUncheckedCreateWithoutRoomsInput = {
+    id?: string
+    name: string
+  }
+
+  export type RoomFacilitiesCreateOrConnectWithoutRoomsInput = {
+    where: RoomFacilitiesWhereUniqueInput
+    create: XOR<RoomFacilitiesCreateWithoutRoomsInput, RoomFacilitiesUncheckedCreateWithoutRoomsInput>
+  }
+
   export type PropertyUpsertWithoutRoomsInput = {
     update: XOR<PropertyUpdateWithoutRoomsInput, PropertyUncheckedUpdateWithoutRoomsInput>
     create: XOR<PropertyCreateWithoutRoomsInput, PropertyUncheckedCreateWithoutRoomsInput>
@@ -21184,16 +22624,42 @@ export namespace Prisma {
     price?: IntFilter<"OrderItem"> | number
   }
 
+  export type RoomFacilitiesUpsertWithWhereUniqueWithoutRoomsInput = {
+    where: RoomFacilitiesWhereUniqueInput
+    update: XOR<RoomFacilitiesUpdateWithoutRoomsInput, RoomFacilitiesUncheckedUpdateWithoutRoomsInput>
+    create: XOR<RoomFacilitiesCreateWithoutRoomsInput, RoomFacilitiesUncheckedCreateWithoutRoomsInput>
+  }
+
+  export type RoomFacilitiesUpdateWithWhereUniqueWithoutRoomsInput = {
+    where: RoomFacilitiesWhereUniqueInput
+    data: XOR<RoomFacilitiesUpdateWithoutRoomsInput, RoomFacilitiesUncheckedUpdateWithoutRoomsInput>
+  }
+
+  export type RoomFacilitiesUpdateManyWithWhereWithoutRoomsInput = {
+    where: RoomFacilitiesScalarWhereInput
+    data: XOR<RoomFacilitiesUpdateManyMutationInput, RoomFacilitiesUncheckedUpdateManyWithoutRoomsInput>
+  }
+
+  export type RoomFacilitiesScalarWhereInput = {
+    AND?: RoomFacilitiesScalarWhereInput | RoomFacilitiesScalarWhereInput[]
+    OR?: RoomFacilitiesScalarWhereInput[]
+    NOT?: RoomFacilitiesScalarWhereInput | RoomFacilitiesScalarWhereInput[]
+    id?: StringFilter<"RoomFacilities"> | string
+    name?: StringFilter<"RoomFacilities"> | string
+  }
+
   export type RoomCreateWithoutAvailabilitiesInput = {
     id?: string
     name: string
     description: string
     price: number
+    number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
     property: PropertyCreateNestedOneWithoutRoomsInput
     peakRates?: PeakRateCreateNestedManyWithoutRoomInput
     orderItems?: OrderItemCreateNestedManyWithoutRoomInput
+    facilities?: RoomFacilitiesCreateNestedManyWithoutRoomsInput
   }
 
   export type RoomUncheckedCreateWithoutAvailabilitiesInput = {
@@ -21202,10 +22668,12 @@ export namespace Prisma {
     description: string
     price: number
     propertyId: string
+    number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
     peakRates?: PeakRateUncheckedCreateNestedManyWithoutRoomInput
     orderItems?: OrderItemUncheckedCreateNestedManyWithoutRoomInput
+    facilities?: RoomFacilitiesUncheckedCreateNestedManyWithoutRoomsInput
   }
 
   export type RoomCreateOrConnectWithoutAvailabilitiesInput = {
@@ -21229,11 +22697,13 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     property?: PropertyUpdateOneRequiredWithoutRoomsNestedInput
     peakRates?: PeakRateUpdateManyWithoutRoomNestedInput
     orderItems?: OrderItemUpdateManyWithoutRoomNestedInput
+    facilities?: RoomFacilitiesUpdateManyWithoutRoomsNestedInput
   }
 
   export type RoomUncheckedUpdateWithoutAvailabilitiesInput = {
@@ -21242,10 +22712,61 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     propertyId?: StringFieldUpdateOperationsInput | string
+    number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     peakRates?: PeakRateUncheckedUpdateManyWithoutRoomNestedInput
     orderItems?: OrderItemUncheckedUpdateManyWithoutRoomNestedInput
+    facilities?: RoomFacilitiesUncheckedUpdateManyWithoutRoomsNestedInput
+  }
+
+  export type RoomCreateWithoutFacilitiesInput = {
+    id?: string
+    name: string
+    description: string
+    price: number
+    number_of_rooms: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    property: PropertyCreateNestedOneWithoutRoomsInput
+    availabilities?: RoomAvailabilityCreateNestedManyWithoutRoomInput
+    peakRates?: PeakRateCreateNestedManyWithoutRoomInput
+    orderItems?: OrderItemCreateNestedManyWithoutRoomInput
+  }
+
+  export type RoomUncheckedCreateWithoutFacilitiesInput = {
+    id?: string
+    name: string
+    description: string
+    price: number
+    propertyId: string
+    number_of_rooms: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    availabilities?: RoomAvailabilityUncheckedCreateNestedManyWithoutRoomInput
+    peakRates?: PeakRateUncheckedCreateNestedManyWithoutRoomInput
+    orderItems?: OrderItemUncheckedCreateNestedManyWithoutRoomInput
+  }
+
+  export type RoomCreateOrConnectWithoutFacilitiesInput = {
+    where: RoomWhereUniqueInput
+    create: XOR<RoomCreateWithoutFacilitiesInput, RoomUncheckedCreateWithoutFacilitiesInput>
+  }
+
+  export type RoomUpsertWithWhereUniqueWithoutFacilitiesInput = {
+    where: RoomWhereUniqueInput
+    update: XOR<RoomUpdateWithoutFacilitiesInput, RoomUncheckedUpdateWithoutFacilitiesInput>
+    create: XOR<RoomCreateWithoutFacilitiesInput, RoomUncheckedCreateWithoutFacilitiesInput>
+  }
+
+  export type RoomUpdateWithWhereUniqueWithoutFacilitiesInput = {
+    where: RoomWhereUniqueInput
+    data: XOR<RoomUpdateWithoutFacilitiesInput, RoomUncheckedUpdateWithoutFacilitiesInput>
+  }
+
+  export type RoomUpdateManyWithWhereWithoutFacilitiesInput = {
+    where: RoomScalarWhereInput
+    data: XOR<RoomUpdateManyMutationInput, RoomUncheckedUpdateManyWithoutFacilitiesInput>
   }
 
   export type RoomCreateWithoutPeakRatesInput = {
@@ -21253,11 +22774,13 @@ export namespace Prisma {
     name: string
     description: string
     price: number
+    number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
     property: PropertyCreateNestedOneWithoutRoomsInput
     availabilities?: RoomAvailabilityCreateNestedManyWithoutRoomInput
     orderItems?: OrderItemCreateNestedManyWithoutRoomInput
+    facilities?: RoomFacilitiesCreateNestedManyWithoutRoomsInput
   }
 
   export type RoomUncheckedCreateWithoutPeakRatesInput = {
@@ -21266,10 +22789,12 @@ export namespace Prisma {
     description: string
     price: number
     propertyId: string
+    number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
     availabilities?: RoomAvailabilityUncheckedCreateNestedManyWithoutRoomInput
     orderItems?: OrderItemUncheckedCreateNestedManyWithoutRoomInput
+    facilities?: RoomFacilitiesUncheckedCreateNestedManyWithoutRoomsInput
   }
 
   export type RoomCreateOrConnectWithoutPeakRatesInput = {
@@ -21293,11 +22818,13 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     property?: PropertyUpdateOneRequiredWithoutRoomsNestedInput
     availabilities?: RoomAvailabilityUpdateManyWithoutRoomNestedInput
     orderItems?: OrderItemUpdateManyWithoutRoomNestedInput
+    facilities?: RoomFacilitiesUpdateManyWithoutRoomsNestedInput
   }
 
   export type RoomUncheckedUpdateWithoutPeakRatesInput = {
@@ -21306,10 +22833,12 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     propertyId?: StringFieldUpdateOperationsInput | string
+    number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     availabilities?: RoomAvailabilityUncheckedUpdateManyWithoutRoomNestedInput
     orderItems?: OrderItemUncheckedUpdateManyWithoutRoomNestedInput
+    facilities?: RoomFacilitiesUncheckedUpdateManyWithoutRoomsNestedInput
   }
 
   export type UserCreateWithoutOrdersInput = {
@@ -21608,11 +23137,13 @@ export namespace Prisma {
     name: string
     description: string
     price: number
+    number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
     property: PropertyCreateNestedOneWithoutRoomsInput
     availabilities?: RoomAvailabilityCreateNestedManyWithoutRoomInput
     peakRates?: PeakRateCreateNestedManyWithoutRoomInput
+    facilities?: RoomFacilitiesCreateNestedManyWithoutRoomsInput
   }
 
   export type RoomUncheckedCreateWithoutOrderItemsInput = {
@@ -21621,10 +23152,12 @@ export namespace Prisma {
     description: string
     price: number
     propertyId: string
+    number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
     availabilities?: RoomAvailabilityUncheckedCreateNestedManyWithoutRoomInput
     peakRates?: PeakRateUncheckedCreateNestedManyWithoutRoomInput
+    facilities?: RoomFacilitiesUncheckedCreateNestedManyWithoutRoomsInput
   }
 
   export type RoomCreateOrConnectWithoutOrderItemsInput = {
@@ -21685,11 +23218,13 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     property?: PropertyUpdateOneRequiredWithoutRoomsNestedInput
     availabilities?: RoomAvailabilityUpdateManyWithoutRoomNestedInput
     peakRates?: PeakRateUpdateManyWithoutRoomNestedInput
+    facilities?: RoomFacilitiesUpdateManyWithoutRoomsNestedInput
   }
 
   export type RoomUncheckedUpdateWithoutOrderItemsInput = {
@@ -21698,10 +23233,12 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
     propertyId?: StringFieldUpdateOperationsInput | string
+    number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     availabilities?: RoomAvailabilityUncheckedUpdateManyWithoutRoomNestedInput
     peakRates?: PeakRateUncheckedUpdateManyWithoutRoomNestedInput
+    facilities?: RoomFacilitiesUncheckedUpdateManyWithoutRoomsNestedInput
   }
 
   export type UserCreateWithoutReviewsInput = {
@@ -22452,6 +23989,7 @@ export namespace Prisma {
     name: string
     description: string
     price: number
+    number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -22480,11 +24018,13 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     availabilities?: RoomAvailabilityUpdateManyWithoutRoomNestedInput
     peakRates?: PeakRateUpdateManyWithoutRoomNestedInput
     orderItems?: OrderItemUpdateManyWithoutRoomNestedInput
+    facilities?: RoomFacilitiesUpdateManyWithoutRoomsNestedInput
   }
 
   export type RoomUncheckedUpdateWithoutPropertyInput = {
@@ -22492,11 +24032,13 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     availabilities?: RoomAvailabilityUncheckedUpdateManyWithoutRoomNestedInput
     peakRates?: PeakRateUncheckedUpdateManyWithoutRoomNestedInput
     orderItems?: OrderItemUncheckedUpdateManyWithoutRoomNestedInput
+    facilities?: RoomFacilitiesUncheckedUpdateManyWithoutRoomsNestedInput
   }
 
   export type RoomUncheckedUpdateManyWithoutPropertyInput = {
@@ -22504,6 +24046,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -22643,6 +24186,60 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     orderId?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type RoomFacilitiesUpdateWithoutRoomsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type RoomFacilitiesUncheckedUpdateWithoutRoomsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type RoomFacilitiesUncheckedUpdateManyWithoutRoomsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type RoomUpdateWithoutFacilitiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    number_of_rooms?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    property?: PropertyUpdateOneRequiredWithoutRoomsNestedInput
+    availabilities?: RoomAvailabilityUpdateManyWithoutRoomNestedInput
+    peakRates?: PeakRateUpdateManyWithoutRoomNestedInput
+    orderItems?: OrderItemUpdateManyWithoutRoomNestedInput
+  }
+
+  export type RoomUncheckedUpdateWithoutFacilitiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    propertyId?: StringFieldUpdateOperationsInput | string
+    number_of_rooms?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    availabilities?: RoomAvailabilityUncheckedUpdateManyWithoutRoomNestedInput
+    peakRates?: PeakRateUncheckedUpdateManyWithoutRoomNestedInput
+    orderItems?: OrderItemUncheckedUpdateManyWithoutRoomNestedInput
+  }
+
+  export type RoomUncheckedUpdateManyWithoutFacilitiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    propertyId?: StringFieldUpdateOperationsInput | string
+    number_of_rooms?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrderItemCreateManyOrderInput = {
