@@ -39,6 +39,15 @@ export default class PropertyRouter {
       (req, res) => this.PropertyController.addRoom(req, res)
     );
 
+    // Update room
+    this.router.post(
+      "/room-update/:id",
+      authenticateToken,
+      upload.array("images", 10),
+      this.PropertyController.updateRoom.bind(this.PropertyController) // ✅ bind
+    );
+  
+
     this.router.get("/categories", authenticateToken, this.PropertyController.getCategories);
     this.router.get("/room-facilities", authenticateToken, this.PropertyController.getRoomFacilities);
     this.router.get("/room-types", authenticateToken, this.PropertyController.getRoomTypes);

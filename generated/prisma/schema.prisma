@@ -108,12 +108,18 @@ model Room {
   number_of_rooms Int
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+  is_published    Boolean  @default(true)
 
+  // relasi
   property       Property           @relation(fields: [propertyId], references: [id])
+  images         RoomImage[] // relasi ke banyak foto
   availabilities RoomAvailability[]
   peakRates      PeakRate[]
   orderItems     OrderItem[]
   facilities     RoomFacilities[]   @relation("RoomFacilitiesOnRooms")
+
+  // tipe kamar baru
+  type RoomType @default(SINGLE)
 }
 
 model RoomAvailability {
@@ -132,6 +138,20 @@ model RoomFacilities {
   name String
 
   rooms Room[] @relation("RoomFacilitiesOnRooms")
+}
+
+model RoomImage {
+  id        String   @id @default(uuid())
+  url       String
+  roomId    String
+  room      Room     @relation(fields: [roomId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+enum RoomType {
+  SINGLE
+  DOUBLE
+  SUITE
 }
 
 model PeakRate {

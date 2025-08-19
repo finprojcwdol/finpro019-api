@@ -127,6 +127,9 @@ class PropertyController {
                     properties: {
                         include: {
                             rooms: {
+                                orderBy: {
+                                    name: "asc", // bisa diganti "desc" untuk urutan menurun
+                                },
                                 include: {
                                     availabilities: true,
                                     peakRates: true,
@@ -401,6 +404,63 @@ class PropertyController {
         catch (error) {
             console.error("Error creating room:", error);
             res.status(500).json({ message: "Error creating room", error });
+        }
+    }
+    ;
+    async updateRoom(req, res) {
+        const roomId = req.params.id;
+        const { email, name, description, type, price, number_of_rooms, is_published, } = req.body;
+        try {
+            // Cek room exist
+            const existingRoom = await prisma_1.default.room.findUnique({ where: { id: roomId } });
+            if (!existingRoom)
+                return res.status(404).json({ message: "Room not found" });
+            // Update room data
+            const updatedRoom = await prisma_1.default.room.update({
+                where: { id: roomId },
+                data: {
+                    name,
+                    description,
+                    type,
+                    price: Number(price),
+                    number_of_rooms: Number(number_of_rooms),
+                    is_published: is_published === "true",
+                },
+            });
+            // Upload images ke Cloudinary
+            let uploadedUrls = [];
+            if (req.files && Array.isArray(req.files)) {
+                for (const file of req.files) {
+                    const b64 = Buffer.from(file.buffer).toString("base64");
+                    const dataURI = `data:${file.mimetype};base64,${b64}`;
+                    const uploadRes = await cloudinary_1.default.uploader.upload(dataURI, {
+                        folder: "rooms",
+                    });
+                    uploadedUrls.push(uploadRes.secure_url);
+                }
+                // Hapus gambar lama dari DB (tidak hapus dari cloud, optional)
+                await prisma_1.default.roomImage.deleteMany({ where: { roomId } });
+                // Simpan gambar baru ke DB
+                for (const url of uploadedUrls) {
+                    await prisma_1.default.roomImage.create({
+                        data: {
+                            roomId,
+                            url,
+                        },
+                    });
+                }
+            }
+            res.status(200).json({
+                message: "Room updated successfully",
+                data: updatedRoom,
+                images: uploadedUrls,
+            });
+            return;
+        }
+        catch (err) {
+            console.error(err);
+            res.status(500).json({ message: "Failed to update room" });
+            return;
         }
     }
     ;

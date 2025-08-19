@@ -142,6 +142,9 @@ export default class PropertyController {
           properties: {
             include: {
               rooms: {
+                orderBy: {
+                  name: "asc", // bisa diganti "desc" untuk urutan menurun
+                },                
                 include: {
                   availabilities: true,
                   peakRates: true,
@@ -470,59 +473,75 @@ export default class PropertyController {
     }
   };
 
-//  async addRoom(req: Request, res: Response) {
-//     try {
+  async updateRoom(req: Request, res: Response) {
+    const roomId = req.params.id;
+      const {
+        email,
+        name,
+        description,
+        type,
+        price,
+        number_of_rooms,
+        is_published,
+      } = req.body;
 
-//       const { email, name, description, price, number_of_rooms, type, images } = req.body;
+      try {
+        // Cek room exist
+        const existingRoom = await prisma.room.findUnique({ where: { id: roomId } });
+        if (!existingRoom) return res.status(404).json({ message: "Room not found" });
 
-//         // Cari user tenant berdasarkan email
-//         const user = await prisma.user.findUnique({
-//           where: { email },
-//           include: { properties: true }, // ambil semua properti yang dimiliki user ini
-//         });
+        // Update room data
+        const updatedRoom = await prisma.room.update({
+          where: { id: roomId },
+          data: {
+            name,
+            description,
+            type,
+            price: Number(price),
+            number_of_rooms: Number(number_of_rooms),
+            is_published: is_published === "true",
+          },
+        });
 
-//         if (!user) {
-//           res.status(404).json({ message: "User not found" });
-//           return;
-//         }
+        // Upload images ke Cloudinary
+        let uploadedUrls: string[] = [];
+        if (req.files && Array.isArray(req.files)) {
+          for (const file of req.files as Express.Multer.File[]) {
+            const b64 = Buffer.from(file.buffer).toString("base64");
+            const dataURI = `data:${file.mimetype};base64,${b64}`;
+            const uploadRes = await cloudinary.uploader.upload(dataURI, {
+              folder: "rooms",
+            });
+            uploadedUrls.push(uploadRes.secure_url);
+          }
 
-//         if (user.properties.length === 0) {
-//           res.status(400).json({ message: "No property found for this tenant" });
-//           return;
-//         }
+          // Hapus gambar lama dari DB (tidak hapus dari cloud, optional)
+          await prisma.roomImage.deleteMany({ where: { roomId } });
 
-//         // Ambil propertyId (misalnya property pertama user ini)
-//         const propertyId = user.properties[0].id;
+          // Simpan gambar baru ke DB
+          for (const url of uploadedUrls) {
+            await prisma.roomImage.create({
+              data: {
+                roomId,
+                url,
+              },
+            });
+          }
+        }
 
-//         // Buat room baru
-//         const room = await prisma.room.create({
-//           data: {
-//             name,
-//             description,
-//             price,
-//             number_of_rooms,
-//             type,
-//             propertyId,
-//             images: {
-//               create: images?.map((url: string) => ({ url })) || []
-//             }
-//           },
-//           include: { images: true, property: true }
-//         });
+        res.status(200).json({
+          message: "Room updated successfully",
+          data: updatedRoom,
+          images: uploadedUrls,
+        });
+        return;
 
-//         res.status(201).json({
-//           message: "Room created successfully",
-//           room,
-//         });
-        
-//         return;
-
-
-//     } catch (error) {
-//       console.error(error);
-//       res.status(500).json({ message: "Error creating room", error });
-//       return;
-//     }
-//   };
+      } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Failed to update room" });
+        return;
+      }
+  
+  };
 
 }

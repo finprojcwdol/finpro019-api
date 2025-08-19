@@ -109,6 +109,7 @@ model Room {
   number_of_rooms Int
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
+  is_published   Boolean @default(true)
 
   // relasi
   property       Property @relation(fields: [propertyId], references: [id])
