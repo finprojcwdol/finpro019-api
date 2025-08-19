@@ -186,7 +186,8 @@ exports.Prisma.RoomScalarFieldEnum = {
   propertyId: 'propertyId',
   number_of_rooms: 'number_of_rooms',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  type: 'type'
 };
 
 exports.Prisma.RoomAvailabilityScalarFieldEnum = {
@@ -199,6 +200,13 @@ exports.Prisma.RoomAvailabilityScalarFieldEnum = {
 exports.Prisma.RoomFacilitiesScalarFieldEnum = {
   id: 'id',
   name: 'name'
+};
+
+exports.Prisma.RoomImageScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  roomId: 'roomId',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.PeakRateScalarFieldEnum = {
@@ -282,6 +290,12 @@ exports.Role = exports.$Enums.Role = {
   TENANT: 'TENANT'
 };
 
+exports.RoomType = exports.$Enums.RoomType = {
+  SINGLE: 'SINGLE',
+  DOUBLE: 'DOUBLE',
+  SUITE: 'SUITE'
+};
+
 exports.RateType = exports.$Enums.RateType = {
   PERCENTAGE: 'PERCENTAGE',
   NOMINAL: 'NOMINAL'
@@ -302,6 +316,7 @@ exports.Prisma.ModelName = {
   Room: 'Room',
   RoomAvailability: 'RoomAvailability',
   RoomFacilities: 'RoomFacilities',
+  RoomImage: 'RoomImage',
   PeakRate: 'PeakRate',
   Order: 'Order',
   OrderItem: 'OrderItem',
