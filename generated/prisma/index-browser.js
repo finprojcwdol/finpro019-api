@@ -187,6 +187,7 @@ exports.Prisma.RoomScalarFieldEnum = {
   number_of_rooms: 'number_of_rooms',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  is_published: 'is_published',
   type: 'type'
 };
 

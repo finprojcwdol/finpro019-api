@@ -7348,6 +7348,7 @@ export namespace Prisma {
     number_of_rooms: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    is_published: boolean | null
     type: $Enums.RoomType | null
   }
 
@@ -7360,6 +7361,7 @@ export namespace Prisma {
     number_of_rooms: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    is_published: boolean | null
     type: $Enums.RoomType | null
   }
 
@@ -7372,6 +7374,7 @@ export namespace Prisma {
     number_of_rooms: number
     createdAt: number
     updatedAt: number
+    is_published: number
     type: number
     _all: number
   }
@@ -7396,6 +7399,7 @@ export namespace Prisma {
     number_of_rooms?: true
     createdAt?: true
     updatedAt?: true
+    is_published?: true
     type?: true
   }
 
@@ -7408,6 +7412,7 @@ export namespace Prisma {
     number_of_rooms?: true
     createdAt?: true
     updatedAt?: true
+    is_published?: true
     type?: true
   }
 
@@ -7420,6 +7425,7 @@ export namespace Prisma {
     number_of_rooms?: true
     createdAt?: true
     updatedAt?: true
+    is_published?: true
     type?: true
     _all?: true
   }
@@ -7519,6 +7525,7 @@ export namespace Prisma {
     number_of_rooms: number
     createdAt: Date
     updatedAt: Date
+    is_published: boolean
     type: $Enums.RoomType
     _count: RoomCountAggregateOutputType | null
     _avg: RoomAvgAggregateOutputType | null
@@ -7550,6 +7557,7 @@ export namespace Prisma {
     number_of_rooms?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    is_published?: boolean
     type?: boolean
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     images?: boolean | Room$imagesArgs<ExtArgs>
@@ -7569,6 +7577,7 @@ export namespace Prisma {
     number_of_rooms?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    is_published?: boolean
     type?: boolean
     property?: boolean | PropertyDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["room"]>
@@ -7582,6 +7591,7 @@ export namespace Prisma {
     number_of_rooms?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    is_published?: boolean
     type?: boolean
     property?: boolean | PropertyDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["room"]>
@@ -7595,10 +7605,11 @@ export namespace Prisma {
     number_of_rooms?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    is_published?: boolean
     type?: boolean
   }
 
-  export type RoomOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "price" | "propertyId" | "number_of_rooms" | "createdAt" | "updatedAt" | "type", ExtArgs["result"]["room"]>
+  export type RoomOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "price" | "propertyId" | "number_of_rooms" | "createdAt" | "updatedAt" | "is_published" | "type", ExtArgs["result"]["room"]>
   export type RoomInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     images?: boolean | Room$imagesArgs<ExtArgs>
@@ -7634,6 +7645,7 @@ export namespace Prisma {
       number_of_rooms: number
       createdAt: Date
       updatedAt: Date
+      is_published: boolean
       type: $Enums.RoomType
     }, ExtArgs["result"]["room"]>
     composites: {}
@@ -8072,6 +8084,7 @@ export namespace Prisma {
     readonly number_of_rooms: FieldRef<"Room", 'Int'>
     readonly createdAt: FieldRef<"Room", 'DateTime'>
     readonly updatedAt: FieldRef<"Room", 'DateTime'>
+    readonly is_published: FieldRef<"Room", 'Boolean'>
     readonly type: FieldRef<"Room", 'RoomType'>
   }
     
@@ -18476,6 +18489,7 @@ export namespace Prisma {
     number_of_rooms: 'number_of_rooms',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
+    is_published: 'is_published',
     type: 'type'
   };
 
@@ -19151,6 +19165,7 @@ export namespace Prisma {
     number_of_rooms?: IntFilter<"Room"> | number
     createdAt?: DateTimeFilter<"Room"> | Date | string
     updatedAt?: DateTimeFilter<"Room"> | Date | string
+    is_published?: BoolFilter<"Room"> | boolean
     type?: EnumRoomTypeFilter<"Room"> | $Enums.RoomType
     property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
     images?: RoomImageListRelationFilter
@@ -19169,6 +19184,7 @@ export namespace Prisma {
     number_of_rooms?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    is_published?: SortOrder
     type?: SortOrder
     property?: PropertyOrderByWithRelationInput
     images?: RoomImageOrderByRelationAggregateInput
@@ -19190,6 +19206,7 @@ export namespace Prisma {
     number_of_rooms?: IntFilter<"Room"> | number
     createdAt?: DateTimeFilter<"Room"> | Date | string
     updatedAt?: DateTimeFilter<"Room"> | Date | string
+    is_published?: BoolFilter<"Room"> | boolean
     type?: EnumRoomTypeFilter<"Room"> | $Enums.RoomType
     property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
     images?: RoomImageListRelationFilter
@@ -19208,6 +19225,7 @@ export namespace Prisma {
     number_of_rooms?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    is_published?: SortOrder
     type?: SortOrder
     _count?: RoomCountOrderByAggregateInput
     _avg?: RoomAvgOrderByAggregateInput
@@ -19228,6 +19246,7 @@ export namespace Prisma {
     number_of_rooms?: IntWithAggregatesFilter<"Room"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Room"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Room"> | Date | string
+    is_published?: BoolWithAggregatesFilter<"Room"> | boolean
     type?: EnumRoomTypeWithAggregatesFilter<"Room"> | $Enums.RoomType
   }
 
@@ -20189,6 +20208,7 @@ export namespace Prisma {
     number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    is_published?: boolean
     type?: $Enums.RoomType
     property: PropertyCreateNestedOneWithoutRoomsInput
     images?: RoomImageCreateNestedManyWithoutRoomInput
@@ -20207,6 +20227,7 @@ export namespace Prisma {
     number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    is_published?: boolean
     type?: $Enums.RoomType
     images?: RoomImageUncheckedCreateNestedManyWithoutRoomInput
     availabilities?: RoomAvailabilityUncheckedCreateNestedManyWithoutRoomInput
@@ -20223,6 +20244,7 @@ export namespace Prisma {
     number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_published?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     property?: PropertyUpdateOneRequiredWithoutRoomsNestedInput
     images?: RoomImageUpdateManyWithoutRoomNestedInput
@@ -20241,6 +20263,7 @@ export namespace Prisma {
     number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_published?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     images?: RoomImageUncheckedUpdateManyWithoutRoomNestedInput
     availabilities?: RoomAvailabilityUncheckedUpdateManyWithoutRoomNestedInput
@@ -20258,6 +20281,7 @@ export namespace Prisma {
     number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    is_published?: boolean
     type?: $Enums.RoomType
   }
 
@@ -20269,6 +20293,7 @@ export namespace Prisma {
     number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_published?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
   }
 
@@ -20281,6 +20306,7 @@ export namespace Prisma {
     number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_published?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
   }
 
@@ -21337,6 +21363,7 @@ export namespace Prisma {
     number_of_rooms?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    is_published?: SortOrder
     type?: SortOrder
   }
 
@@ -21354,6 +21381,7 @@ export namespace Prisma {
     number_of_rooms?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    is_published?: SortOrder
     type?: SortOrder
   }
 
@@ -21366,6 +21394,7 @@ export namespace Prisma {
     number_of_rooms?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    is_published?: SortOrder
     type?: SortOrder
   }
 
@@ -23578,6 +23607,7 @@ export namespace Prisma {
     number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    is_published?: boolean
     type?: $Enums.RoomType
     images?: RoomImageCreateNestedManyWithoutRoomInput
     availabilities?: RoomAvailabilityCreateNestedManyWithoutRoomInput
@@ -23594,6 +23624,7 @@ export namespace Prisma {
     number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    is_published?: boolean
     type?: $Enums.RoomType
     images?: RoomImageUncheckedCreateNestedManyWithoutRoomInput
     availabilities?: RoomAvailabilityUncheckedCreateNestedManyWithoutRoomInput
@@ -23785,6 +23816,7 @@ export namespace Prisma {
     number_of_rooms?: IntFilter<"Room"> | number
     createdAt?: DateTimeFilter<"Room"> | Date | string
     updatedAt?: DateTimeFilter<"Room"> | Date | string
+    is_published?: BoolFilter<"Room"> | boolean
     type?: EnumRoomTypeFilter<"Room"> | $Enums.RoomType
   }
 
@@ -24178,6 +24210,7 @@ export namespace Prisma {
     number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    is_published?: boolean
     type?: $Enums.RoomType
     property: PropertyCreateNestedOneWithoutRoomsInput
     images?: RoomImageCreateNestedManyWithoutRoomInput
@@ -24195,6 +24228,7 @@ export namespace Prisma {
     number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    is_published?: boolean
     type?: $Enums.RoomType
     images?: RoomImageUncheckedCreateNestedManyWithoutRoomInput
     peakRates?: PeakRateUncheckedCreateNestedManyWithoutRoomInput
@@ -24226,6 +24260,7 @@ export namespace Prisma {
     number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_published?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     property?: PropertyUpdateOneRequiredWithoutRoomsNestedInput
     images?: RoomImageUpdateManyWithoutRoomNestedInput
@@ -24243,6 +24278,7 @@ export namespace Prisma {
     number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_published?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     images?: RoomImageUncheckedUpdateManyWithoutRoomNestedInput
     peakRates?: PeakRateUncheckedUpdateManyWithoutRoomNestedInput
@@ -24258,6 +24294,7 @@ export namespace Prisma {
     number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    is_published?: boolean
     type?: $Enums.RoomType
     property: PropertyCreateNestedOneWithoutRoomsInput
     images?: RoomImageCreateNestedManyWithoutRoomInput
@@ -24275,6 +24312,7 @@ export namespace Prisma {
     number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    is_published?: boolean
     type?: $Enums.RoomType
     images?: RoomImageUncheckedCreateNestedManyWithoutRoomInput
     availabilities?: RoomAvailabilityUncheckedCreateNestedManyWithoutRoomInput
@@ -24311,6 +24349,7 @@ export namespace Prisma {
     number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    is_published?: boolean
     type?: $Enums.RoomType
     property: PropertyCreateNestedOneWithoutRoomsInput
     availabilities?: RoomAvailabilityCreateNestedManyWithoutRoomInput
@@ -24328,6 +24367,7 @@ export namespace Prisma {
     number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    is_published?: boolean
     type?: $Enums.RoomType
     availabilities?: RoomAvailabilityUncheckedCreateNestedManyWithoutRoomInput
     peakRates?: PeakRateUncheckedCreateNestedManyWithoutRoomInput
@@ -24359,6 +24399,7 @@ export namespace Prisma {
     number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_published?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     property?: PropertyUpdateOneRequiredWithoutRoomsNestedInput
     availabilities?: RoomAvailabilityUpdateManyWithoutRoomNestedInput
@@ -24376,6 +24417,7 @@ export namespace Prisma {
     number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_published?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     availabilities?: RoomAvailabilityUncheckedUpdateManyWithoutRoomNestedInput
     peakRates?: PeakRateUncheckedUpdateManyWithoutRoomNestedInput
@@ -24391,6 +24433,7 @@ export namespace Prisma {
     number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    is_published?: boolean
     type?: $Enums.RoomType
     property: PropertyCreateNestedOneWithoutRoomsInput
     images?: RoomImageCreateNestedManyWithoutRoomInput
@@ -24408,6 +24451,7 @@ export namespace Prisma {
     number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    is_published?: boolean
     type?: $Enums.RoomType
     images?: RoomImageUncheckedCreateNestedManyWithoutRoomInput
     availabilities?: RoomAvailabilityUncheckedCreateNestedManyWithoutRoomInput
@@ -24439,6 +24483,7 @@ export namespace Prisma {
     number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_published?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     property?: PropertyUpdateOneRequiredWithoutRoomsNestedInput
     images?: RoomImageUpdateManyWithoutRoomNestedInput
@@ -24456,6 +24501,7 @@ export namespace Prisma {
     number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_published?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     images?: RoomImageUncheckedUpdateManyWithoutRoomNestedInput
     availabilities?: RoomAvailabilityUncheckedUpdateManyWithoutRoomNestedInput
@@ -24762,6 +24808,7 @@ export namespace Prisma {
     number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    is_published?: boolean
     type?: $Enums.RoomType
     property: PropertyCreateNestedOneWithoutRoomsInput
     images?: RoomImageCreateNestedManyWithoutRoomInput
@@ -24779,6 +24826,7 @@ export namespace Prisma {
     number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    is_published?: boolean
     type?: $Enums.RoomType
     images?: RoomImageUncheckedCreateNestedManyWithoutRoomInput
     availabilities?: RoomAvailabilityUncheckedCreateNestedManyWithoutRoomInput
@@ -24847,6 +24895,7 @@ export namespace Prisma {
     number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_published?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     property?: PropertyUpdateOneRequiredWithoutRoomsNestedInput
     images?: RoomImageUpdateManyWithoutRoomNestedInput
@@ -24864,6 +24913,7 @@ export namespace Prisma {
     number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_published?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     images?: RoomImageUncheckedUpdateManyWithoutRoomNestedInput
     availabilities?: RoomAvailabilityUncheckedUpdateManyWithoutRoomNestedInput
@@ -25622,6 +25672,7 @@ export namespace Prisma {
     number_of_rooms: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    is_published?: boolean
     type?: $Enums.RoomType
   }
 
@@ -25652,6 +25703,7 @@ export namespace Prisma {
     number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_published?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     images?: RoomImageUpdateManyWithoutRoomNestedInput
     availabilities?: RoomAvailabilityUpdateManyWithoutRoomNestedInput
@@ -25668,6 +25720,7 @@ export namespace Prisma {
     number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_published?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     images?: RoomImageUncheckedUpdateManyWithoutRoomNestedInput
     availabilities?: RoomAvailabilityUncheckedUpdateManyWithoutRoomNestedInput
@@ -25684,6 +25737,7 @@ export namespace Prisma {
     number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_published?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
   }
 
@@ -25871,6 +25925,7 @@ export namespace Prisma {
     number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_published?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     property?: PropertyUpdateOneRequiredWithoutRoomsNestedInput
     images?: RoomImageUpdateManyWithoutRoomNestedInput
@@ -25888,6 +25943,7 @@ export namespace Prisma {
     number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_published?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
     images?: RoomImageUncheckedUpdateManyWithoutRoomNestedInput
     availabilities?: RoomAvailabilityUncheckedUpdateManyWithoutRoomNestedInput
@@ -25904,6 +25960,7 @@ export namespace Prisma {
     number_of_rooms?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_published?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumRoomTypeFieldUpdateOperationsInput | $Enums.RoomType
   }
 

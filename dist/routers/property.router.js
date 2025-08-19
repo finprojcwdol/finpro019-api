@@ -31,6 +31,9 @@ class PropertyRouter {
         // this.router.post("/property/room-add", authenticateToken, upload.array("images", 10),this.PropertyController.addRoom);    
         // this.router.post("/property/room-add", upload.array("images", 10),this.PropertyController.addRoom);    
         this.router.post("/room-add", auth_1.authenticateToken, upload_1.default.array("images", 10), (req, res) => this.PropertyController.addRoom(req, res));
+        // Update room
+        this.router.post("/room-update/:id", auth_1.authenticateToken, upload_1.default.array("images", 10), this.PropertyController.updateRoom.bind(this.PropertyController) // ✅ bind
+        );
         this.router.get("/categories", auth_1.authenticateToken, this.PropertyController.getCategories);
         this.router.get("/room-facilities", auth_1.authenticateToken, this.PropertyController.getRoomFacilities);
         this.router.get("/room-types", auth_1.authenticateToken, this.PropertyController.getRoomTypes);
