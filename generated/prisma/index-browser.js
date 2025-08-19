@@ -150,6 +150,7 @@ exports.Prisma.Email_verificationsScalarFieldEnum = {
 exports.Prisma.PropertyCategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  description: 'description',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -183,8 +184,11 @@ exports.Prisma.RoomScalarFieldEnum = {
   description: 'description',
   price: 'price',
   propertyId: 'propertyId',
+  number_of_rooms: 'number_of_rooms',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  is_published: 'is_published',
+  type: 'type'
 };
 
 exports.Prisma.RoomAvailabilityScalarFieldEnum = {
@@ -192,6 +196,18 @@ exports.Prisma.RoomAvailabilityScalarFieldEnum = {
   roomId: 'roomId',
   date: 'date',
   isAvailable: 'isAvailable'
+};
+
+exports.Prisma.RoomFacilitiesScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.RoomImageScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  roomId: 'roomId',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.PeakRateScalarFieldEnum = {
@@ -275,6 +291,12 @@ exports.Role = exports.$Enums.Role = {
   TENANT: 'TENANT'
 };
 
+exports.RoomType = exports.$Enums.RoomType = {
+  SINGLE: 'SINGLE',
+  DOUBLE: 'DOUBLE',
+  SUITE: 'SUITE'
+};
+
 exports.RateType = exports.$Enums.RateType = {
   PERCENTAGE: 'PERCENTAGE',
   NOMINAL: 'NOMINAL'
@@ -294,6 +316,8 @@ exports.Prisma.ModelName = {
   Property: 'Property',
   Room: 'Room',
   RoomAvailability: 'RoomAvailability',
+  RoomFacilities: 'RoomFacilities',
+  RoomImage: 'RoomImage',
   PeakRate: 'PeakRate',
   Order: 'Order',
   OrderItem: 'OrderItem',

@@ -1,4 +1,3 @@
-// import { PrismaClient, Role, Gender, AuthType, OrderStatus, RateType } from "@prisma/client";
 import { AuthType, Gender, OrderStatus, PrismaClient, RateType, Role } from '../generated/prisma';
 
 const prisma = new PrismaClient();
@@ -7,20 +6,64 @@ async function main() {
   console.log("🌱 Starting seed...");
 
   // 1️⃣ Property Categories
-  const categoryHotel = await prisma.propertyCategory.create({
-    data: { name: "Hotel" },
-  });
+  const propertyCategories = [
+    {
+      name: 'Hotel',
+      description:
+        'Accommodations for travelers often with restaurants, meeting rooms and other guest services',
+    },
+    {
+      name: 'Guesthouse',
+      description:
+        'Private home with separate living facilities for host and guest',
+    },
+    {
+      name: 'Bed and breakfast',
+      description:
+        'Private home offering overnight stays and breakfast',
+    },
+    {
+      name: 'Homestay',
+      description:
+        'Private home with shared living facilities for host and guest',
+    },
+    {
+      name: 'Hostel',
+      description:
+        'Budget accommodations with mostly dorm-style beds and social atmosphere',
+    },
+    {
+      name: 'Condo hotel',
+      description:
+        'Independent apartments with some hotel facilities like a front desk',
+    },
+    {
+      name: 'Capsule Hotel',
+      description:
+        'Extremely small units or capsules offering cheap and basic overnight accommodations',
+    },
+    {
+      name: 'Country House',
+      description:
+        'Private home in the countryside with simple accommodations',
+    },
+  ];
 
-  const categoryVilla = await prisma.propertyCategory.create({
-    data: { name: "Villa" },
-  });
+  const createdCategories = await Promise.all(
+    propertyCategories.map((cat) =>
+      prisma.propertyCategory.create({ data: cat })
+    )
+  );
+
+  const categoryHotel = createdCategories.find((cat) => cat.name === 'Hotel');
+  if (!categoryHotel) throw new Error("Category 'Hotel' not found in seeding!");
 
   // 2️⃣ Users
   const tenant = await prisma.user.create({
     data: {
       username: "Dian CK",
       email: "dianck2002@gmail.com",
-      password: "hashedpassword", // sebaiknya hash sungguhan
+      password: "hashedpassword",
       role: Role.TENANT,
       gender: Gender.MALE,
       auth_type: AuthType.GOOGLE,
@@ -72,6 +115,7 @@ async function main() {
       description: "Spacious room with balcony",
       price: 750000,
       propertyId: property.id,
+      number_of_rooms: 10,
     },
   });
 
@@ -81,6 +125,7 @@ async function main() {
       description: "Luxury suite with private pool",
       price: 1500000,
       propertyId: property.id,
+      number_of_rooms: 5,
     },
   });
 
@@ -106,7 +151,7 @@ async function main() {
       roomId: room1.id,
       date: new Date("2025-08-15"),
       type: RateType.PERCENTAGE,
-      price: 20, // berarti +20%
+      price: 20,
     },
   });
 
@@ -121,14 +166,8 @@ async function main() {
       userId: user.id,
       items: {
         create: [
-          {
-            roomId: room1.id,
-            price: 750000,
-          },
-          {
-            roomId: room1.id,
-            price: 750000,
-          },
+          { roomId: room1.id, price: 750000 },
+          { roomId: room1.id, price: 750000 },
         ],
       },
     },
@@ -158,6 +197,58 @@ async function main() {
       totalIncome: 5000000,
       fromDate: new Date("2025-07-01"),
       toDate: new Date("2025-07-31"),
+    },
+  });
+
+  // 1️⃣1️⃣ Room Facilities
+  const facilities = [
+    "Clothes rack",
+    "Flat-screen TV",
+    "Air conditioning",
+    "Linens",
+    "Desk",
+    "Wake-up service",
+    "Towels",
+    "Wardrobe or closet",
+    "Heating",
+    "Fan",
+    "Safe",
+    "Towels/Sheets (extra fee)",
+    "Entire unit located on ground floor",
+  ];
+
+  const createdFacilities = await prisma.roomFacilities.createMany({
+    data: facilities.map((name) => ({ name })),
+    skipDuplicates: true,
+  });
+
+  // ambil ulang semua fasilitas
+  const allFacilities = await prisma.roomFacilities.findMany();
+
+  // connect beberapa fasilitas ke room1 dan room2
+  await prisma.room.update({
+    where: { id: room1.id },
+    data: {
+      facilities: {
+        connect: allFacilities
+          .filter((f) =>
+            ["Clothes rack", "Flat-screen TV", "Air conditioning", "Linens", "Desk"].includes(f.name)
+          )
+          .map((f) => ({ id: f.id })),
+      },
+    },
+  });
+
+  await prisma.room.update({
+    where: { id: room2.id },
+    data: {
+      facilities: {
+        connect: allFacilities
+          .filter((f) =>
+            ["Wake-up service", "Towels", "Wardrobe or closet", "Safe", "Fan"].includes(f.name)
+          )
+          .map((f) => ({ id: f.id })),
+      },
     },
   });
 
